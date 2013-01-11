@@ -69,7 +69,9 @@
 		        }
 		      });
 		      function printChatMessage(count, name, text) {
-		        $('<div/>').text(text).prepend($('<em class="message"/>').text(count+': '+name+': ')).appendTo($('#messagesDiv'));
+				var extraSpace='';
+				for(var i=0;i<count.toString().length;i++) extraSpace+=' ';
+		        $('<div/>').html('<a style="font-family: courier;">'+count+extraSpace+'</a>'+': '+text)).appendTo($('#messagesDiv'));
 		        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
 		      };
 		      dataRef.on('child_added', function(snapshot) {

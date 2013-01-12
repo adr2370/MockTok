@@ -70,7 +70,7 @@
 		      });
 		      function printChatMessage(count, name, text) {
 				var extraSpace='';
-				for(var i=0;i<count.toString().length;i++) extraSpace+=' ';
+				for(var i=0;i<3-count.toString().length;i++) extraSpace+='&nbsp;';
 		        $('<div/>').html('<a style="font-family: courier;">'+count+extraSpace+'</a>'+': '+text).appendTo($('#messagesDiv'));
 		        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
 		      };

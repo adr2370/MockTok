@@ -72,7 +72,7 @@
 		</ul>
 		<script type="text/javascript">
 		$('.dropdown').click(function() {
-		  $(this).find('.dropdown-menu').first().stop(true, true).delay(100).slideUp()
+		  $('.dropdown-menu').slideToggle();
 		});
 		$('.dropdown-menu').click(function(e) {
 		        e.stopPropagation();
@@ -108,7 +108,7 @@
 						stringAdd+="<li>"+questions[i][j]+"</li>";
 					}
 					stringAdd+="</ol></li>";*/
-					var stringAdd="<li id='category"+(i+1)+"'><a onclick='slide("+(i+1)+")'>"+questions[i][0]+"</a></li>";
+					var stringAdd="<li id='category"+(i+1)+"'><a onclick='slide("+(i+1)+")'>"+questions[i][0]+"</a></li><li id=question"+(i+1)+" style='display:none;'>"questions[i][Math.floor(Math.random()*(questions[i].length-1)+1)].replace(/\n/g, '<br />')"</li>";
 					$("#questionsList").append(stringAdd);
 				}
 			});
@@ -118,6 +118,7 @@
 						$("#category"+i).slideUp();
 					}
 				}
+				$("#question"+x).slideDown();
 				console.log(x);
 			}
 		</script>

@@ -76,7 +76,7 @@ class InterviewsController < ApplicationController
       @interview.identer_score = 1
       respond_to do |format|
         if @interview.save
-          format.html { redirect_to :action => :waiting, :interview_id => @interview.id, notice: 'Interview was successfully created.' }
+          format.html { redirect_to :action => :show, :id => @interview.id, notice: 'Interview was successfully created.' }
           format.json { render json: @interview, status: :created, location: @interview }
         else
           format.html { render action: "new" }

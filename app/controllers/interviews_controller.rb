@@ -40,7 +40,7 @@ class InterviewsController < ApplicationController
   # POST /interviews
   # POST /interviews.json
   def create
-    if (params[:role] == "interviewer")
+    if (params[:role] == "Interviewer")
       @interview = Interview.new(params[:interview], :identer => session[:user_id], :identee => nil )
       @interview.identer = session[:user_id]
       @interview.session_id = OTSDK.createSession( request.ip ).to_s

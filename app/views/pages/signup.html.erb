@@ -199,7 +199,10 @@ var singlyLogin = function() {
 							$("#SignUpBtn").addClass('btn-success').click(singlyLogin);
 					});
 				});
-			} else {
+			} else if(!<%= session["user_id"].nil? %>) {
+          $("#login_wrapper").hide();
+          $("#interview_wrapper").show();
+      } else {
 				$("#SignUpBtn").click(singlyLogin);
 			}
 

@@ -7,9 +7,7 @@ function sessionConnectedHandler(event) {
 	 subscribeToStreams(event.streams);
 	var div = document.createElement('div');
 	     div.setAttribute('id', 'publisher');
-	    div.setAttribute('width', 300);
-	    div.setAttribute('height', 400);
-		div.setAttribute('style', 'margin-top:50px;margin-left:50px;');
+		div.setAttribute('style', 'margin-top:50px;margin-left:50px;width:300px;height:400px;');
 	     var publisherContainer = document.getElementById('publisherContainer');
 	         // This example assumes that a publisherContainer div exists
 	     publisherContainer.appendChild(div);
@@ -35,9 +33,7 @@ function subscribeToStreams(streams) {
 function displayStream(stream) {
     var div = document.createElement('div');
     div.setAttribute('id', 'stream' + stream.streamId);
-    div.setAttribute('width', 300);
-    div.setAttribute('height', 400);
-	div.setAttribute('style', 'margin-top:50px;margin-left:50px;');
+	div.setAttribute('style', 'margin-top:50px;margin-left:50px;width:300px;height:400px;');
     var streamsContainer = document.getElementById('streamsContainer');
     streamsContainer.appendChild(div);
     subscriber = session.subscribe(stream, 'stream' + stream.streamId);

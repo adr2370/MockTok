@@ -1721,3 +1721,11 @@ ActionController::RoutingError (No route matches [GET] "/assets/ico/favicon.png"
 
 
   Rendered /Users/song/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20130112005125)
+Migrating to CreateInterviews (20130112005437)
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("interviews")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("users")[0m

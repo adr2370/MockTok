@@ -77,7 +77,6 @@
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li class="active" id="LoginBtn"><a href="#">Login</a></li>
           <li><a href="#myModal" data-toggle="modal">About</a></li>
         </ul>
         <h3 class="muted">MockTok</h3>
@@ -88,7 +87,7 @@
       <div class="jumbotron">
         <h1>Conquer Your Fear Of Interviews!</h1>
         <p class="lead">Walk into your next job interview feeling confident after using our webservice.</p>
-        <a class="btn btn-large btn-success" href="#" id="SignUpBtn">Sign up today</a>
+        <a class="btn btn-large btn-success" href="#" id="SignUpBtn">Sign In with GitHub</a>
       </div>
       
     <!--Area for the buttons used for sign up-->
@@ -135,20 +134,6 @@
 
 
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-
-<script type="text/javascript">
-  		var accessToken=decodeURI((RegExp('[#|&]access_token=' + '(.+?)(&|$)').exec(location.hash)||[,null])[1]);
-			if(accessToken!="null") {
-				$.get("https://api.singly.com/profile?access_token="+accessToken, function(data){
-					console.log(data.id);
-				});
-			}
-			var services=new Array("github");
-			for(var i=0;i<services.length;i++) {
-				var c=services[i];
-				$('#LoginInfo').append('<div id="login'+c+'" style="float: left;margin-right: 8px;margin-bottom:2px;width: 30px;"><a href="https://api.singly.com/oauth/authorize?client_id=fbe8f4a0df06ac78b9152a1710914fef&service='+c+'&redirect_uri='+window.location.host+window.location.pathname+'&response_type=token"><img src=http://mocktok.com/img/'+c+'.jpg height="32" width="32"/></a></div>');
-			}
-</script>
     
     <!-- Le javascript
     ================================================== -->
@@ -157,16 +142,7 @@
 
     <script type="text/javascript">
         $('#SignUpBtn').click(function() {
-            console.log("hello");
-            $(this).fadeOut('fast', function() {
-                $('#LoginInfo').fadeIn('fast');
-            }); 
-        });
-        $('#LoginBtn').click(function() {
-            console.log("login btn pushed");
-            $('#SignUpBtn').fadeOut('fast', function() {
-                $('#LoginInfo').fadeIn('fast');
-            });
+            window.location.href='https://api.singly.com/oauth/authorize?client_id=fbe8f4a0df06ac78b9152a1710914fef&service=github&redirect_uri=http://'+window.location.host+'/users/login_or_create/';
         });
     </script>
   </body>

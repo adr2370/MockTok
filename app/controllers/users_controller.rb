@@ -80,4 +80,11 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def login_or_create
+    puts params
+    # TODO
+  end
+
+
 end

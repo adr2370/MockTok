@@ -91,14 +91,8 @@
         <a class="btn btn-large btn-success" href="#" id="SignUpBtn">Sign up today</a>
       </div>
       
-      <!--Area for the buttons used for sign up-->
-      <div class="hide-me" id="CreateAccnt">
-        <p>I'm back</p>
-      </div>
-    
     <!--Area for the buttons used for sign up-->
     <div class="hide-me" id="LoginInfo">
-        <p>This is the login box</p>
     </div>
 
     <hr>
@@ -138,18 +132,34 @@
             <iframe src="http://player.vimeo.com/video/57094153?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1" width="800" height="450" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
         </div>
     </div>
+
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script type="text/javascript">
+  		var accessToken=decodeURI((RegExp('[#|&]access_token=' + '(.+?)(&|$)').exec(location.hash)||[,null])[1]);
+			if(accessToken!="null") {
+				$.get("https://api.singly.com/profile?access_token="+accessToken, function(data){
+					console.log(data.id);
+				});
+			}
+			var services=new Array("github");
+			for(var i=0;i<services.length;i++) {
+				var c=services[i];
+				$('#LoginInfo').append('<div id="login'+c+'" style="float: left;margin-right: 8px;margin-bottom:2px;width: 30px;"><a href="https://api.singly.com/oauth/authorize?client_id=fbe8f4a0df06ac78b9152a1710914fef&service='+c+'&redirect_uri='+window.location.host+window.location.pathname+'&response_type=token"><img src=http://mocktok.com/img/'+c+'.jpg height="32" width="32"/></a></div>');
+			}
+</script>
     
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="/assets/bootstrap.min.js"></script>
 
     <script type="text/javascript">
         $('#SignUpBtn').click(function() {
             console.log("hello");
             $(this).fadeOut('fast', function() {
-                $('#CreateAccnt').fadeIn('fast');
+                $('#LoginInfo').fadeIn('fast');
             }); 
         });
         $('#LoginBtn').click(function() {
@@ -158,7 +168,6 @@
                 $('#LoginInfo').fadeIn('fast');
             });
         });
-    
     </script>
   </body>
 </html>

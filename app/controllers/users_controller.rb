@@ -80,4 +80,12 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def login_or_create
+    @user = User.find_or_create_by_singly_id(params[:userId])
+    session[:user] = @user
+    redirect_to :action => :new, :controller => :interviews
+  end
+
+
 end

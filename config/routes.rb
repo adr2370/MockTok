@@ -4,7 +4,12 @@ MockTok::Application.routes.draw do
   root :to => 'interviews#index'
   match '/signup', to: 'pages#signup'
 
-  resources :users
+  resources :users do
+    collection do
+      get 'login_or_create'
+      post 'login_or_create'
+    end
+  end
 
   resources :interviews do
     collection do

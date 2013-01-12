@@ -23,6 +23,7 @@ class InterviewsController < ApplicationController
     p "========="
     p "========="
     p "========="
+    @currentUser = session[:user_id]
     # if @interview.identer.to_s == session[:user_id].to_s or @interview.identee.to_s == session[:user_id].to_s
       @openTokToken = OTSDK.generateToken :session_id => @interview.session_id, :role => OpenTok::RoleConstants::MODERATOR
       respond_to do |format|

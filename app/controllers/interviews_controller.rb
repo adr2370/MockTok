@@ -43,7 +43,7 @@ class InterviewsController < ApplicationController
     @interviewer = params[:role] == "Interviewer"
     @interview = User.find( session[:user_id] ).findOpenInterview( @interviewer, params[:interview][:expected_time] )
     if @interview
-      Pusher['private-interview' + @interview.id].trigger("message", {
+      Pusher['private-interview' + @interview.id.to_s].trigger("message", {
         :user_id => session[:user_id],
         :text => "Match Found!"
       })

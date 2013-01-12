@@ -16,14 +16,15 @@ class InterviewsController < ApplicationController
   def show
     @interview = Interview.find(params[:id])
     if @interview.identer == session[:user_id] or @interview.identee == session[:user_id]
+    # if @interview.identer.to_s == session[:user_id].to_s or @interview.identee.to_s == session[:user_id].to_s
       @openTokToken = OTSDK.generateToken :session_id => @interview.session_id, :connection_data => "#{session[:user_id]}", :role => OpenTok::RoleConstants::MODERATOR
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @interview }
-      end
-    else
-      render 'application/unauthorized', :status => :unauthorized
-    end
+       end
+    # else
+    #   render 'application/forbidden', :status => :unauthorized
+    # end
   end
 
   # GET /interviews/new

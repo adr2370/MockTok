@@ -42,7 +42,7 @@
 						while(i<data.length&&data[i].charCodeAt(0)!=10) {
 							i++;
 						}
-						currCategory=data.substring(start,i-start);
+						currCategory=data.substring(start,i);
 						var currCate=new Array();
 						currCate.push(currCategory);
 						questions.categories.push(currCate);
@@ -53,7 +53,7 @@
 						}
 						if(i<data.length-1)
 							console.log(data[i].charCodeAt(0)+" "+data[i+1].charCodeAt(0));
-						questions.categories[questions.categories.length-1].push(data.substring(questionStart,i-questionStart));
+						questions.categories[questions.categories.length-1].push(data.substring(questionStart,i));
 					}
 				}
 				q=data;

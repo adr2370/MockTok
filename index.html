@@ -32,36 +32,14 @@
 			          var apiKey = "21889302";
 					  var sessionId = "1_MX4yMTg4OTMwMn4xMjcuMC4wLjF-RnJpIEphbiAxMSAxNjoyNTo0OCBQU1QgMjAxM34wLjk1MDE4Mjl-";
 			          var token = "T1==cGFydG5lcl9pZD0yMTg4OTMwMiZzaWc9Y2YyN2ZjZGU0Y2JmNDk4ZDk0MThmMmE5YzBhMTgzMzJlMDk3YTlmODpzZXNzaW9uX2lkPXVuZGVmaW5lZCZjcmVhdGVfdGltZT0xMzU3OTUwMzQ3JmV4cGlyZV90aW1lPTEzNTgwMzY3NDcmcm9sZT1wdWJsaXNoZXImbm9uY2U9MzY3MzcxJnNka192ZXJzaW9uPXRiLWRhc2hib2FyZC1qYXZhc2NyaXB0LXYx";
-			          TB.addEventListener("exception", exceptionHandler);
-					var session = TB.initSession(sessionId); // Replace with your own session ID. See https://dashboard.tokbox.com/projects
-					session.addEventListener("sessionConnected", sessionConnectedHandler);
-					session.addEventListener("streamCreated", streamCreatedHandler);
-					session.connect(apiKey, token); // Replace with your API key and token. See https://dashboard.tokbox.com/projects
-					function sessionConnectedHandler(event) {
-						 subscribeToStreams(event.streams);
-						 session.publish();
-					}
-					function streamCreatedHandler(event) {
-						subscribeToStreams(event.streams);
-					}
-					function subscribeToStreams(streams) {
-						for (i = 0; i < streams.length; i++) {
-							var stream = streams[i];
-							if (stream.connection.connectionId != session.connection.connectionId) {
-								session.subscribe(stream);
-							}
-						}
-					}
-					function exceptionHandler(event) {
-						console.log(event.message);
-					}
+					</script
+			           <script src="js/interview.js"></script>
 			    </script>
 		</div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.3.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

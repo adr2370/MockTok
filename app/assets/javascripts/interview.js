@@ -90,8 +90,11 @@ function interview(id, interviewer, username, session, token, length) {
         // Publish the data to the server for later playback
         $.ajax("/interviews/" + id+".json", {
           type: "PUT",
-          data: { interview: { archive_id: archive.archiveID }}
+          contentType: 'application/json',
+          dataType:'json',
+          data: JSON.stringify( { "interview": { "archive_id": archive.archiveId }} )
         });
+        console.log( { "interview": { "archive_id": archive.archiveID }} );
     }
 
     tokbox.addEventListener("sessionConnected", function(e) {

@@ -24,7 +24,7 @@ function streamCreatedHandler(event) {
     }
 }
 function subscribeToStreams(streams) {
-	for (i = 0; i < streams.length; i++) {
+	for (var i = 0; i < streams.length; i++) {
 		var stream = streams[i];
 		if (stream.connection.connectionId != session.connection.connectionId) {
 			displayStream(stream);
@@ -34,11 +34,11 @@ function subscribeToStreams(streams) {
 function displayStream(stream) {
     var div = document.createElement('div');
     div.setAttribute('id', 'stream' + stream.streamId);
-	div.setAttribute('style', 'margin-top:50px;margin-left:50px;width:300px;height:400px;');
+	div.setAttribute('style', 'margin-top:50px;margin-left:50px;');
     var streamsContainer = document.getElementById('streamsContainer');
     streamsContainer.appendChild(div);
 var subscriberProperties = {width: 400, height:300};
-    subscriber = session.subscribe(stream, 'stream' + stream.streamId,subscriberProperties);
+    subscriber = session.subscribe(stream, 'stream' + stream.streamId, subscriberProperties);
 }
 function exceptionHandler(event) {
 	console.log(event.message);

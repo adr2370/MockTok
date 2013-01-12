@@ -1,5 +1,17 @@
 <% if @interview.identer == session[:user_id] %>
-
+	<div style="margin-left: auto;margin-right: auto;width: 329px;margin-top: 100px;">
+	<div class="btn-group" data-toggle="buttons-radio">
+	  <button class="number btn">1</button>
+	  <button class="number btn">2</button>
+	  <button class="number btn">3</button>
+	<button class="number btn">4</button>
+	<button class="number btn">5</button>
+	<button class="number btn">6</button>
+	<button class="number btn">7</button>
+	<button class="number btn">8</button>
+	<button class="number btn">9</button>
+	<button class="number btn active">10</button>
+	</div>
 	<%= form_tag interview_interviewer_review_path, :method => :post do %>
 	    <div class="field">
 	        <%= number_field_tag "identer_score" %>
@@ -11,11 +23,35 @@
 	    <%= hidden_field_tag :id, :value => @interview.id %>
 	    <div class="actions">
 	        <%= submit_tag "Submit", :class => "button" %>
-	    </div>
+	    </div>	
+			<script type="text/javascript">
+			$("#identer_score").hide();
+			$("#identer_score").val(10);
+			$(".number").click(function() {
+				$("#identer_score").val($(this).text());
+				});
+			$(".button").addClass("btn");
+			$("#id").val(<%= @interview.id %>);
+			</script>
 	<% end %>
+</div>
 
 
 <% else %>
+
+<div style="margin-left: auto;margin-right: auto;width: 329px;margin-top: 100px;">
+<div class="btn-group" data-toggle="buttons-radio">
+  <button class="number btn">1</button>
+  <button class="number btn">2</button>
+  <button class="number btn">3</button>
+<button class="number btn">4</button>
+<button class="number btn">5</button>
+<button class="number btn">6</button>
+<button class="number btn">7</button>
+<button class="number btn">8</button>
+<button class="number btn">9</button>
+<button class="number btn active">10</button>
+</div>
 
 	<%= form_tag interview_interviewee_review_path, :method => :post do %>
 	    <div class="field">
@@ -29,6 +65,16 @@
 	    <div class="actions">
 	        <%= submit_tag "Submit", :class => "button", :id => @interview.id %>
 	    </div>
+		
+			<script type="text/javascript">
+			$("#identee_score").hide();
+			$("#identee_score").val(10);
+			$(".number").click(function() {
+				$("#identee_score").val($(this).text());
+				});
+			$(".button").addClass("btn");
+			$("#id").val(<%= @interview.id %>);
+			</script>
 	<% end %>
 
 

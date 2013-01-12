@@ -38,7 +38,7 @@
 					if(i<data.length-10&&data.substring(i,i+10)=='Category: ') {
 						i+=10;
 						var start=i;
-						while(i<data.length&&data[i]!='\n') {
+						while(i<data.length&&data[i].charCodeAt(0)!=10) {
 							i++;
 						}
 						currCategory=data.substring(start,i-start);
@@ -47,8 +47,8 @@
 						questions.categories.push(currCate);
 					} else {
 						var questionStart=i;
-						while(i<data.length-1&&(data[i]!='\n'||data[i+1]!='\n')) {
-							console.log(data[i]+" "+data[i+1]);
+						while(i<data.length-1&&(data[i].charCodeAt(0)!=10||data[i+1].charCodeAt(0)!=10)) {
+							console.log(data[i].charCodeAt(0)+" "+data[i+1].charCodeAt(0));
 							i++;
 						}
 						questions.categories[questions.categories.length-1].push(data.substring(questionStart,i-questionStart));

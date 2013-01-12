@@ -22,7 +22,6 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-		<div id="login"></div>
 		<div id="questions"></div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -60,20 +59,6 @@
 				q=data;
 				console.log(questions);
 			});
-		</script>
-
-		<script type="text/javascript">
-			var accessToken=decodeURI((RegExp('[#|&]access_token=' + '(.+?)(&|$)').exec(location.hash)||[,null])[1]);
-			if(accessToken!="null") {
-				$.get("https://api.singly.com/profile?access_token="+accessToken, function(data){
-					console.log(data.id);
-				});
-			}
-			var services=new Array("github");
-			for(var i=0;i<services.length;i++) {
-				var c=services[i];
-				$('#login').append('<div id="login'+c+'" style="float: left;margin-right: 8px;margin-bottom:2px;width: 30px;"><a href="https://api.singly.com/oauth/authorize?client_id=fbe8f4a0df06ac78b9152a1710914fef&service='+c+'&redirect_uri=http://'+window.location.host+window.location.pathname+'&response_type=token"><img src=http://mocktok.com/img/'+c+'.jpg height="32" width="32"/></a></div>');
-			}
 		</script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

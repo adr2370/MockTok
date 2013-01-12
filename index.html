@@ -39,17 +39,30 @@
 			          var apiKey = "21889302";
 			          var sessionId = "1_MX4yMTg4OTMwMn4xMjcuMC4wLjF-RnJpIEphbiAxMSAxNTozOToxNCBQU1QgMjAxM34wLjM4NDQ2Mzczfg";
 			          var token = "T1==cGFydG5lcl9pZD0yMTg4OTMwMiZzaWc9ODE4ZmIxNzA2Nzk1MWFiNmIxNmM3NmRiZTMzMWIzNDYyNjI3NjI5YTpzZXNzaW9uX2lkPXVuZGVmaW5lZCZjcmVhdGVfdGltZT0xMzU3OTQ3NTUzJmV4cGlyZV90aW1lPTEzNTgwMzM5NTMmcm9sZT1wdWJsaXNoZXImbm9uY2U9MzcwNzEyJnNka192ZXJzaW9uPXRiLWRhc2hib2FyZC1qYXZhc2NyaXB0LXYx";
-
-			          // Initialize session, set up event listeners, and connect
-			          var session = TB.initSession(sessionId);
-			          session.addEventListener('sessionConnected', sessionConnectedHandler);
-			          session.connect(apiKey, token);
-
-			          function sessionConnectedHandler(event) {
-			            var publisher = TB.initPublisher(apiKey, 'myPublisherDiv');
-			            session.publish(publisher);
-			          }
-			        </script>
+			          TB.addEventListener("exception", exceptionHandler);
+					var session = TB.initSession(sessionId); // Replace with your own session ID. See https://dashboard.tokbox.com/projects
+					session.addEventListener("sessionConnected", sessionConnectedHandler);
+					session.addEventListener("streamCreated", streamCreatedHandler);
+					session.connect(apiKey, token); // Replace with your API key and token. See https://dashboard.tokbox.com/projects
+					function sessionConnectedHandler(event) {
+						 subscribeToStreams(event.streams);
+						 session.publish();
+					}
+					function streamCreatedHandler(event) {
+						subscribeToStreams(event.streams);
+					}
+					function subscribeToStreams(streams) {
+						for (i = 0; i < streams.length; i++) {
+							var stream = streams[i];
+							if (stream.connection.connectionId != session.connection.connectionId) {
+								session.subscribe(stream);
+							}
+						}
+					}
+					function exceptionHandler(event) {
+						alert(event.message);
+					}
+			    </script>
 		</div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>

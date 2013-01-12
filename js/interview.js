@@ -7,13 +7,13 @@ function sessionConnectedHandler(event) {
 	 subscribeToStreams(event.streams);
 	var div = document.createElement('div');
 	     div.setAttribute('id', 'publisher');
-
+	    div.setAttribute('width', 300);
+	    div.setAttribute('height', 400);
+		div.setAttribute('style', 'margin-top:50px;margin-left:50px;');
 	     var publisherContainer = document.getElementById('publisherContainer');
 	         // This example assumes that a publisherContainer div exists
 	     publisherContainer.appendChild(div);
-
-	     var publisherProperties = {width: 400, height:300, name:"Bob's stream"};
-	     publisher = TB.initPublisher(apiKey, 'publisher', publisherProperties);
+	     publisher = TB.initPublisher(apiKey, 'publisher');
 	     session.publish(publisher);
 }
 function streamCreatedHandler(event) {
@@ -35,6 +35,9 @@ function subscribeToStreams(streams) {
 function displayStream(stream) {
     var div = document.createElement('div');
     div.setAttribute('id', 'stream' + stream.streamId);
+    div.setAttribute('width', 300);
+    div.setAttribute('height', 400);
+	div.setAttribute('style', 'margin-top:50px;margin-left:50px;');
     var streamsContainer = document.getElementById('streamsContainer');
     streamsContainer.appendChild(div);
     subscriber = session.subscribe(stream, 'stream' + stream.streamId);

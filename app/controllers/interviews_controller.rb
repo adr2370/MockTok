@@ -15,17 +15,8 @@ class InterviewsController < ApplicationController
   # GET /interviews/1.json
   def show
     @interview = Interview.find(params[:id])
-    p @interview.identer == session[:user_id]
-    p @interview.identer == session[:user_id]
-    p @interview.identer == session[:user_id]
-    p @interview.identer == session[:user_id]
-    p @interview.identer == session[:user_id]
-    p @interview.identee == session[:user_id]
-    p @interview.identee == session[:user_id]
-    p @interview.identee == session[:user_id]
-    p @interview.identee == session[:user_id]
-    p @interview.identee == session[:user_id]
-    if @interview.identer == session[:user_id] or @interview.identee == session[:user_id]
+    
+    if @interview.identer.to_s == session[:user_id].to_s or @interview.identee.to_s == session[:user_id].to_s
       @openTokToken = OTSDK.generateToken :session_id => @interview.session_id, :role => OpenTok::RoleConstants::MODERATOR
       respond_to do |format|
         format.html # show.html.erb

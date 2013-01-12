@@ -63,8 +63,8 @@
 		<ul class="nav nav-pills">
 		<li class="dropdown" style="position: absolute;right: 0px;bottom: 0px;">
 		  <a href="#" data-toggle="dropdown" class="dropdown-toggle">Suggested Question<b class="caret up"></b></a>
-		<ul id="questionsList" class="dropdown-menu dropup-menu" style="left: -61%;text-align: right;">
-			<li><a href="#">
+		<ul id="questionsList" class="dropdown-menu dropup-menu" style="left: -18%;text-align: right;">
+			<li id="category0"><a onclick="slide(0)">
 				Select Category:
 			</a></li>
 		</ul>
@@ -101,10 +101,13 @@
 						stringAdd+="<li>"+questions[i][j]+"</li>";
 					}
 					stringAdd+="</ol></li>";*/
-					var stringAdd="<li><a href='#'>"+questions[i][0]+"</a></li>";
+					var stringAdd="<li id='category"+(i+1)+"'><a onclick='slide("+(i+1)+")'>"+questions[i][0]+"</a></li>";
 					$("#questionsList").append(stringAdd);
 				}
 			});
+			function slide(var x) {
+				console.log(x);
+			}
 		</script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

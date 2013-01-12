@@ -50,6 +50,10 @@
       .hide-me {
         display:none;     
       }
+      #myModal{
+        height: 450px;
+        width: 800px;
+      }
       
     </style>
     <link href="/assets/bootstrap-responsive.css" rel="stylesheet">
@@ -83,7 +87,7 @@
       <div class="jumbotron">
         <h1>Conquer Your Fear Of Interviews!</h1>
         <p class="lead">Walk into your next job interview feeling confident after using our webservice.</p>
-        <a class="btn btn-large btn-success" href="#" id="SignUpBtn">Sign In with GitHub</a>
+        <a class="btn btn-large btn-success" href="#" id="SignUpBtn">Sign up with GitHub</a>
       </div>
       
     <!--Area for the buttons used for sign up-->
@@ -99,7 +103,7 @@
         </div>
         <div class="span6">
             <h4>LiveText</h4>
-            <p>Ask and answer the nitty gritty coding questions with our real time text editor.</p>
+            <p>ASk and answer the nitty gritty coding questions with our real time text editor.</p>
         </div>
     </div>
     
@@ -121,8 +125,26 @@
 
     </div> <!-- /container -->
 
+    <!-- Modal For About -->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div id="myModal">
+            <iframe src="http://player.vimeo.com/video/57094153?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1" width="800" height="450" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        </div>
+    </div>
+
 
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script type="text/javascript">
+  		var accessToken=decodeURI((RegExp('[#|&]access_token=' + '(.+?)(&|$)').exec(location.hash)||[,null])[1]);
+      var userId;
+			if(accessToken!="null") {
+				$.get("https://api.singly.com/profile?access_token="+accessToken, function(data){
+					userId=data.id;
+          window.location.href="/users/login_or_create/?accessToken="+accessToken+"&userId="+userId;
+				});
+			}
+</script>
     
     <!-- Le javascript
     ================================================== -->
@@ -131,7 +153,7 @@
 
     <script type="text/javascript">
         $('#SignUpBtn').click(function() {
-            window.location.href='https://api.singly.com/oauth/authorize?client_id=fbe8f4a0df06ac78b9152a1710914fef&service=github&redirect_uri=http://'+window.location.host+'/users/login_or_create/';
+            window.location.href='https://api.singly.com/oauth/authorize?client_id=fbe8f4a0df06ac78b9152a1710914fef&service=github&redirect_uri=http://'+window.location.host+window.location.pathname+'&response_type=token';
         });
     </script>
   </body>

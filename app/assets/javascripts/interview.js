@@ -6,7 +6,7 @@
  * token: string, tokbox user token. Should be moderator for interviewer, publisher for interviewee
  * length: integer, length of meeting in minutes
  */
-function interview(interviewer, username, session, token, length) {
+function interview(id, interviewer, username, session, token, length) {
     var apikey = "22493452"; // Tokbox API key constant
 
     // Establish Firebase & CodeMirror connections for the editor
@@ -88,7 +88,7 @@ function interview(interviewer, username, session, token, length) {
     var tokboxRecord = function() {
         tokbox.startRecording(archive);
         // Publish the data to the server for later playback
-        $.post("/archive",{session: tokbox_id, archive: archive.archiveID, interviewer: tokbox.connection.connectionId, interviewee: peer});
+        $.post("/interviews/update",{id: id, interview: { session_id: tokbox_id, archiveID: archive.archiveID, interviewerConnID: tokbox.connection.connectionId, intervieweeConnID: peer }});
     }
 
     tokbox.addEventListener("sessionConnected", function(e) {

@@ -89,11 +89,6 @@ class InterviewsController < ApplicationController
   def webhook
     webhook = Pusher::WebHook.new(request)
     p "webhook received!~"
-    p "webhook received!~"
-    p webhook
-    p "webhook received!~"
-    p "webhook received!~"
-    p "webhook received!~"
     if webhook.valid?
       webhook.events.each do |event|
         if event["name"] == 'channel_vacated'
@@ -101,13 +96,7 @@ class InterviewsController < ApplicationController
           @interview = Interview.find(@channel)
           @interview.waiting = false
           @interview.save!
-            p "channel vacated!"
-              p "channel vacated!"
-                p "channel vacated!"
-                  p "channel vacated!"
-                    p "channel vacated!"
-                      p "channel vacated!"
-                        p "channel vacated!"
+          p "channel vacated!"
         end
       end
     else

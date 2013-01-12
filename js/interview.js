@@ -6,7 +6,6 @@ session.connect(apiKey, token); // Replace with your API key and token. See http
 function sessionConnectedHandler(event) {
 	 subscribeToStreams(event.streams);
 	var publisherContainer = document.getElementById('myPublisherDiv');
-	     publisherContainer.appendChild(div);
 	     var publisherProperties = {width: 400, height:300, name:"Bob's stream"};
 	     publisher = TB.initPublisher(apiKey, 'publisher', publisherProperties);
 	     session.publish(publisher);

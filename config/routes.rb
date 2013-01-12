@@ -1,7 +1,7 @@
 MockTok::Application.routes.draw do
   get "pages/signup"
 
-  root :to => 'interviews#index'
+  root :to => 'pages#signup'
   match '/signup', to: 'pages#signup'
 
   resources :users do

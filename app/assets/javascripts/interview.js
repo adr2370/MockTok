@@ -66,7 +66,12 @@ function interview(interviewer, username, session, token, length) {
         // Store peer connection ID for recording
         peer = stream.connection.connectionId;
         // Point it to the right div
-        tokbox.subscribe(stream, interviewer ? "video_interviewee" : "video_interviewer", {width: $(window).height()*2/3-1, height: $(window).height()/2-1});
+        var container = $("<div>").attr("id","video_subscriber");
+        if(interviewer)
+          $("#video").append(container);
+        else
+          $("#video").prepend(container);
+        tokbox.subscribe(stream, "video_subscriber", {width: $(window).height()*2/3-1, height: $(window).height()/2-1});
 		$("#video object:first-child").attr('style','outline: none;position: absolute;left: 0px;top: 0px;');
 		$("#video object:last-child").attr('style','outline: none;position: absolute;left: 0px;top: '+$(window).height()/2+'px;');
         // Begin the countdown

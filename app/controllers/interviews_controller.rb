@@ -48,7 +48,7 @@ class InterviewsController < ApplicationController
     @interviewer = params[:role] == "Interviewer"
     @interview = User.find( session[:user_id] ).findOpenInterview( @interviewer, params[:interview][:expected_time] )
     if @interview
-      Pusher['private-interview' + @interview.id].trigger("message", {
+      Pusher['private-interview' + @interview.id.to_s].trigger("message", {
         :user_id => session[:user_id],
         :text => "Match Found!"
       })
@@ -94,27 +94,17 @@ class InterviewsController < ApplicationController
   def webhook
     webhook = Pusher::WebHook.new(request)
     p "webhook received!~"
-    p "webhook received!~"
-    p webhook
-    p "webhook received!~"
-    p "webhook received!~"
-    p "webhook received!~"
     if webhook.valid?
       webhook.events.each do |event|
-        p "channel vacated!"
-          p "channel vacated!"
-            p "channel vacated!"
-              p "channel vacated!"
-                p "channel vacated!"
-                  p "channel vacated!"
-                    p "channel vacated!"
         if event["name"] == 'channel_vacated'
           @channel = event["channel"][17..-1]
           @interview = Interview.find(@channel)
           @interview.waiting = false
           @interview.save!
+          p "channel vacated!"
         end
       end
+      render :text => "Thanks!"
     else
       status 401
     end

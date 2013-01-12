@@ -5,7 +5,8 @@
     <th>Expected time</th>
     <th>Waiting</th>
     <th>Finished at</th>
-    <th></th>
+    <th>id</th>
+    <th>created_at</th>
     <th></th>
     <th></th>
   </tr>
@@ -15,6 +16,8 @@
     <td><%= interview.expected_time %></td>
     <td><%= interview.waiting %></td>
     <td><%= interview.finished_at %></td>
+	    <td><%= interview.id %></td>
+		    <td><%= interview.created_at %></td>
     <td><%= link_to 'Show', interview %></td>
     <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
     <td><%= link_to 'Destroy', interview, method: :delete, data: { confirm: 'Are you sure?' } %></td>

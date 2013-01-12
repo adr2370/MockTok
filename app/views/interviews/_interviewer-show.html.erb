@@ -1,2 +1,124 @@
 <script>interview(false, "TEST_USER", "<%= @interview.session_id %>", "<%= @openTokToken %>", 15)</script>
 <%= link_to :action => :done, :controller => :interviews, :id => @interview.id %>
+
+<style>
+.dropup-menu {
+    bottom: 100%;
+    top: auto !important;
+}
+/* position the arrow downwards, pointing to the menu */
+.navbar .dropup-menu:before {
+    border-bottom: none;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid rgba(0, 0, 0, 0.2);
+    left: 7px;
+    top: 100%;
+}
+.navbar .dropup-menu:after {
+    border-bottom: none;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #fff;
+    left: 10px;
+    top: 100%;
+    left: 6px;
+}
+/* point the caret up*/
+.up {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid #000000;
+    border-top: none;
+    position: relative;
+    top: -1px;
+    right: -3px;
+}
+</style>
+
+<ul class="nav nav-pills">
+<li class="dropdown btn" style="position: absolute;right: 0px;bottom: 0px;padding:0px 0px;">
+  <a href="#" data-toggle="dropdown" class="dropdown-toggle">Suggested Question<b class="caret up"></b></a>
+<ul id="questionsList" class="dropdown-menu dropup-menu" style="left: -13%;text-align: right;width: 189px;">
+	<li id="category0"><a>
+		Select Category:
+	</a></li>
+</ul>
+</li>
+</ul>
+<script type="text/javascript">
+var up=true;
+$('.dropdown').click(function() {
+	if(up) {
+		$('.up').css('border-bottom','none');
+		$('.up').css('border-top','4px solid #000000');
+	} else {
+		$('.up').css('border-bottom','4px solid #000000');
+		$('.up').css('border-top','none');
+	}	
+	up=!up;
+  $('.dropdown-menu').slideToggle(400, function() {
+	repopulate();
+});
+});
+$('.dropdown-menu').click(function(e) {
+        e.stopPropagation();
+    });
+	var q;
+	var questions=new Array();
+	$.get("/questions.txt", function(data) {
+		var currCategory='';
+		for(var i=0;i<data.length;i++) {
+			if(i<data.length-10&&data.substring(i,i+10)=='Category: ') {
+				i+=10;
+				var start=i;
+				while(i<data.length&&data[i].charCodeAt(0)!=10) {
+					i++;
+				}
+				currCategory=data.substring(start,i);
+				var currCate=new Array();
+				currCate.push(currCategory);
+				questions.push(currCate);
+			} else {
+				var questionStart=i;
+				while(i<data.length-1&&!(data[i].charCodeAt(0)==10&&data[i+1].charCodeAt(0)==10)) {
+					i++;
+				}
+				questions[questions.length-1].push(data.substring(questionStart,i-1));
+			}
+			i++;
+		}
+		for(var i=0;i<questions.length;i++) {
+			var question=questions[i][Math.floor(Math.random()*(questions[i].length-1)+1)].replace(/\n/g, '<br />');
+			var stringAdd="<li id='category"+(i+1)+"' style='cursor:pointer'><a onclick='slide("+(i+1)+")'>"+questions[i][0]+"</a></li><li id=question"+(i+1)+" style='display:none;margin-left: 10px;margin-right: 10px;text-align: left;cursor:default;'>"+question+"</li>";
+			$("#questionsList").append(stringAdd);
+		}
+	});
+	function repopulate() {
+		for(var i=0;i<=20;i++) {
+			$("#category"+i).show();
+			$("#question"+i).hide();
+			$("#questionsList").css('left','-13%');
+			$("#questionsList").css('width','189px');
+		}
+	}
+	function slide(x) {
+		if($("#category10").is(":visible")) {
+			for(var i=0;i<=20;i++) {
+				if(i!=x) {
+					$("#category"+i).slideUp();
+				}
+			}
+			$("#question"+x).slideDown();
+			$('#questionsList').animate({
+			    left: '-94%',
+			    width: '325px'
+			  });
+		} else {
+			$("#question"+x).slideUp(400,function() {
+				$("#question"+x).html(questions[x-1][Math.floor(Math.random()*(questions[x-1].length-1)+1)].replace(/\n/g, '<br />'));
+				$("#question"+x).slideDown();
+			});
+		}
+	}
+</script>

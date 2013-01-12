@@ -10,6 +10,8 @@ MockTok::Application.routes.draw do
     collection do
       get 'login_or_create'
       post 'login_or_create'
+      get 'playback'
+      post 'playback'
     end
   end
 

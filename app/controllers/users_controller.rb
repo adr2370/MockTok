@@ -89,5 +89,11 @@ class UsersController < ApplicationController
     # redirect_to :action => :new, :controller => :interviews
   end
 
+  def playback
+    @user = User.find(session[:user_id])
+    @interview = Interview.find(params[:interview_id])
+    @identer = User.find(params[:identer])
+    @identee = User.find(params[:identee])
+  end
 
 end

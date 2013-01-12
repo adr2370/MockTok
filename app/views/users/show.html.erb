@@ -10,7 +10,15 @@
 <%= link_to 'Back', users_path %>
 
 
-<table class="table" border="1">
+
+<td><a href="#" role="button" id="popover" data-content="Spoke well but needs to improve technical knowlege" data-trigger='hover'>My Comments</a></td>
+<td>2/10</td>
+<td><a href="#" role="button" id="otherpopover" data-content="Wipped out his dick while saying 'I'll backdoor hack you' over and over, but was an expert in C." data-trigger='hover'>Other's Comments</a></td>
+<td><a href="#" role="button" id="noplaypopover" data-content="Can not play other user's interviews." data-trigger='hover'><img src="NoPlay.png" height="50" width="40"></img></a></td>
+<tr>width="40"></img></a></td><tr>
+
+
+<table class="table" border="1" cellpadding="5">
 	<tr>
 		<th>Date</th>
 		<th>Role</th>
@@ -24,13 +32,31 @@
 		<% @interviews.each do |interview| %>
 			<tr class=userRow>
 			<td class="userDate"><small><%= interview.finished_at.to_date %></small></td>
-			<td class="userRole"><%= if interview.identee == @user.id then "<small>Interviewee</small>".html_safe else "<small>Interviewer</small>".html_safe end %></td>
-			<td class="userScore"><%= if interview.identee == @user.id then interview.identee_score else interview.identer_score end %></td>
-			<td class="userComments"><%= if interview.identee == @user.id then interview.identee_comments else interview.identer_comments end %></td>
-			<td class="otherScore"><%= if interview.identee == @user.id then interview.identer_score else interview.identee_score end %></td>
-			<td class="otherComments"><%= if interview.identee == @user.id then interview.identer_comments  else interview.identee_comments end %></td>
-			<td class="playback"><%= if session[:user_id] == @user.id then "<small>PLAYBACK BUTTON HERE</small>".html_safe else "<small>NOOOO PLAYBACK BUTTON HERE</small>".html_safe end %></td>
+			<td class="userRole">
+				<%= if interview.identee == @user.id then "<small>Interviewee</small>".html_safe else "<small>Interviewer</small>".html_safe end %>
+			</td>
+			<td class="userScore">
+				<%= if interview.identee == @user.id then interview.identee_score else interview.identer_score end %>
+			</td>
+			<td class="userComments" role="button" id="otherpopover" data-trigger='hover'>
+				<%= if interview.identee == @user.id then interview.identee_comments else interview.identer_comments end %>
+			</td>
+			<td class="otherScore">
+				<%= if interview.identee == @user.id then interview.identer_score else interview.identee_score end %>
+			</td>
+			<td class="otherComments" role="button" id="otherpopover" data-trigger='hover'>
+				<%= if interview.identee == @user.id then interview.identer_comments  else interview.identee_comments end %>
+			</td>
+			<td class="playback" role="button" id="noplaypopover" data-trigger='hover'>
+				<%= if session[:user_id] == @user.id then link_to "Playback", :action => :playback, :controller => :users, :interview_id => interview.id, :identee => interview.identee, :identer => interview.identer else image_tag("/assets/noPlay.png") end %>
+			</td>
 			</tr>
 		<% end %>
 	<% end %>
 </table>
+
+<script>
+$('#popover').popover()
+$('#otherpopover').popover()
+$('#noplaypopover').popover()
+</script>

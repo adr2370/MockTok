@@ -15,6 +15,16 @@ class InterviewsController < ApplicationController
   # GET /interviews/1.json
   def show
     @interview = Interview.find(params[:id])
+    p @interview.identer == session[:user_id]
+    p @interview.identer == session[:user_id]
+    p @interview.identer == session[:user_id]
+    p @interview.identer == session[:user_id]
+    p @interview.identer == session[:user_id]
+    p @interview.identee == session[:user_id]
+    p @interview.identee == session[:user_id]
+    p @interview.identee == session[:user_id]
+    p @interview.identee == session[:user_id]
+    p @interview.identee == session[:user_id]
     if @interview.identer == session[:user_id] or @interview.identee == session[:user_id]
       @openTokToken = OTSDK.generateToken :session_id => @interview.session_id, :role => OpenTok::RoleConstants::MODERATOR
       respond_to do |format|
@@ -22,7 +32,7 @@ class InterviewsController < ApplicationController
         format.json { render json: @interview }
       end
     else
-      render 'application/unauthorized', :status => :unauthorized
+      render 'application/forbidden', :status => :unauthorized
     end
   end
 

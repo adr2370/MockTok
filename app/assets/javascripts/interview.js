@@ -61,7 +61,7 @@ function interview(interviewer, username, session, token, length) {
 
     var tokboxSubscribe = function(stream) {
         // Don't re-subscribe, nor subscribe to ourselves
-        if(peer || (tokbox.connection && stream.connection.connectionId == tokbox.connection.connectionId))
+        if(tokbox.connection && stream.connection.connectionId == tokbox.connection.connectionId)
             return;
         // Store peer connection ID for recording
         peer = stream.connection.connectionId;

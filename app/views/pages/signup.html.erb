@@ -77,7 +77,7 @@
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li><a href="#myModal" data-toggle="modal">About</a></li>
+          <li><a href="#myModal" data-toggle="modal">About Us</a></li>
         </ul>
         <h3 class="muted">MockTok</h3>
       </div>
@@ -87,7 +87,11 @@
       <div class="jumbotron">
         <h1>Conquer Your Fear Of Interviews!</h1>
         <p class="lead">Walk into your next job interview feeling confident after using our webservice.</p>
-        <a class="btn btn-large btn-success" href="#" id="SignUpBtn">Sign up with GitHub</a>
+		<iframe src="http://player.vimeo.com/video/57094153?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="600" height="337" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+		<br>
+		<br>
+		<br>
+        <a class="btn btn-large btn-success" href="#" id="SignUpBtn">Sign in with GitHub</a>
       </div>
       
     <!--Area for the buttons used for sign up-->
@@ -126,13 +130,6 @@
 
     </div> <!-- /container -->
 
-    <!-- Modal For About -->
-    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div id="myModal">
-            <iframe src="http://player.vimeo.com/video/57094153?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1" width="800" height="450" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-        </div>
-    </div>
-
 
     <script src="http://code.jquery.com/jquery-latest.js"></script>
 
@@ -145,14 +142,7 @@
           window.location.href="/users/login_or_create/?accessToken="+accessToken+"&userId="+userId;
 				});
 			}
-<<<<<<< HEAD
-			var services=new Array("github");
-			for(var i=0;i<services.length;i++) {
-				var c=services[i];
-				$('#LoginInfo').append('<div id="login'+c+'" style="float: left;margin-right: 8px;margin-bottom:2px;width: 30px;"><a href="https://api.singly.com/oauth/authorize?client_id=fbe8f4a0df06ac78b9152a1710914fef&service='+c+'&redirect_uri=http://'+window.location.host+window.location.pathname+'&response_type=token"><img src=http://mocktok.com/img/'+c+'.jpg height="32" width="32"/></a></div>');
-			}
-=======
->>>>>>> 466262d04d9c1e30ac02fcc68f4f9ddcdbed1ff8
+
 </script>
     
     <!-- Le javascript

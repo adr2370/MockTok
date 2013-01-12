@@ -8,9 +8,9 @@ class User < ActiveRecord::Base
 
   def findOpenInterview( interviewer, timespan )
     if interviewer
-      @interviews = Interview.where( "waiting=? AND expected_time=? AND identer=? AND identee=?", true, timespan, nil, self.id )
+      @interviews = Interview.where( "waiting=? AND expected_time=? AND identer=? AND identee!=?", true, timespan, nil, self.id )
     else
-      @interviews = Interview.where( "waiting=? AND expected_time=? AND identee=? AND identer=?", true, timespan, nil, self.id )
+      @interviews = Interview.where( "waiting=? AND expected_time=? AND identee=? AND identer!=?", true, timespan, nil, self.id )
     end
     if @interviews == [] or @interviews.nil?
       nil

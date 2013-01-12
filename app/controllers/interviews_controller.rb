@@ -96,18 +96,18 @@ class InterviewsController < ApplicationController
     p "webhook received!~"
     if webhook.valid?
       webhook.events.each do |event|
-        p "channel vacated!"
-          p "channel vacated!"
-            p "channel vacated!"
-              p "channel vacated!"
-                p "channel vacated!"
-                  p "channel vacated!"
-                    p "channel vacated!"
         if event["name"] == 'channel_vacated'
           @channel = event["channel"][17..-1]
           @interview = Interview.find(@channel)
           @interview.waiting = false
           @interview.save!
+            p "channel vacated!"
+              p "channel vacated!"
+                p "channel vacated!"
+                  p "channel vacated!"
+                    p "channel vacated!"
+                      p "channel vacated!"
+                        p "channel vacated!"
         end
       end
     else

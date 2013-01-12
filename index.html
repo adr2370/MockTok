@@ -63,7 +63,7 @@
 		<ul class="nav nav-pills">
 		<li class="dropdown" style="position: absolute;right: 0px;bottom: 0px;">
 		  <a href="#" data-toggle="dropdown" class="dropdown-toggle">Suggested Question<b class="caret up"></b></a>
-		<ul id="questionsList" class="dropdown-menu dropup-menu" style="left: -18%;text-align: right;">
+		<ul id="questionsList" class="dropdown-menu dropup-menu" style="left: -18%;text-align: right;height: 547px;width: 189px;">
 			<li id="category0"><a>
 				Select Category:
 			</a></li>
@@ -71,6 +71,11 @@
 		</li>
 		</ul>
 		<script type="text/javascript">
+		$('.dropdown').click(function() {
+		  $(this).find('.dropdown-menu').first().stop(true, true).delay(250).slideDown();
+		}, function() {
+		  $(this).find('.dropdown-menu').first().stop(true, true).delay(100).slideUp()
+		});
 		$('.dropdown-menu').click(function(e) {
 		        e.stopPropagation();
 		    });

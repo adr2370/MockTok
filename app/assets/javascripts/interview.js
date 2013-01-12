@@ -55,9 +55,13 @@ function interview(id, interviewer, username, session, token, length) {
         tokbox.disconnect();
         // Do we need to stop the editor?
         setTimeout(function() {
-            window.location = "/review/"+session; // Redirect to session review
+            window.location = "/interviews/interview_done?id="+id; // Redirect to session review
         }, 500);
     }
+    if(interviewer)
+        $("#done").click(disconnect);
+    else
+        tokbox.addEventListener("sessionRecordingStopped", disconnect);
 
     var tokboxSubscribe = function(stream) {
         // Don't re-subscribe, nor subscribe to ourselves

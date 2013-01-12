@@ -88,7 +88,10 @@ function interview(id, interviewer, username, session, token, length) {
     var tokboxRecord = function() {
         tokbox.startRecording(archive);
         // Publish the data to the server for later playback
-        $.post("/interviews/update",{id: id, interview: { session_id: tokbox_id, archiveID: archive.archiveID, interviewerConnID: tokbox.connection.connectionId, intervieweeConnID: peer }});
+        $.ajax("/interviews/" + id, {
+          type: "PUT",
+          data: { interview: { archiveID: archive.archiveID }}
+        });
     }
 
     tokbox.addEventListener("sessionConnected", function(e) {

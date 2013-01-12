@@ -3,8 +3,8 @@
  * session: string, tokbox session ID. Also used by firebase & archive
  * token: string, tokbox user token. Should be moderator for interviewer, publisher for interviewee
  * archive: string, the archive ID
- * interviewer: string, interviewer connection ID
- * interviewee: string, interviewee connection ID
+ * interviewer: string, interviewer user ID
+ * interviewee: string, interviewee user ID
  */
 function playback(session, token, archive, interviewer, interviewee) {
     var apikey = "22493452"; // Tokbox API key constant

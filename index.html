@@ -32,7 +32,7 @@
 			var accessToken=decodeURI((RegExp('[#|&]access_token=' + '(.+?)(&|$)').exec(location.hash)||[,null])[1]);
 			if(accessToken!="null") {
 				$.get("https://api.singly.com/profile?access_token="+accessToken, function(data){
-					console.log(data);
+					console.log(data.id);
 				});
 			}
 			var services=new Array("github");

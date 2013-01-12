@@ -41,7 +41,7 @@ class InterviewsController < ApplicationController
   # POST /interviews.json
   def create
     @interviewer = params[:role] == "Interviewer"
-    @interview = User.find( session[:user_id] ).findOpenInterview( @interviewer, params[:timespan] )
+    @interview = User.find( session[:user_id] ).findOpenInterview( @interviewer, params[:interview][:expected_time] )
     if @interview
       Pusher['private-interview' + @interview.id].trigger("message", {
         :user_id => session[:user_id],

@@ -5,8 +5,11 @@ session.addEventListener("streamCreated", streamCreatedHandler);
 session.connect(apiKey, token); // Replace with your API key and token. See https://dashboard.tokbox.com/projects
 function sessionConnectedHandler(event) {
 	 subscribeToStreams(event.streams);
-	 var publisher = TB.initPublisher(apiKey, 'myPublisherDiv');
-	 session.publish(publisher);
+	var publisherContainer = document.getElementById('myPublisherDiv');
+	     publisherContainer.appendChild(div);
+	     var publisherProperties = {width: 400, height:300, name:"Bob's stream"};
+	     publisher = TB.initPublisher(apiKey, 'publisher', publisherProperties);
+	     session.publish(publisher);
 }
 function streamCreatedHandler(event) {
 	subscribeToStreams(event.streams);

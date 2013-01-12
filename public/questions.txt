@@ -1,0 +1,439 @@
+Category: Arrays and Strings
+
+Implement an algorithm to determine if a string has all unique characters What if you can not use additional data structures?
+
+Write code to reverse a C-Style String (C-String means that “abcd” is represented as five characters, including the null character )
+
+Design an algorithm and write code to remove the duplicate characters in a string without using any additional buffer NOTE: One or two additional variables are fine An extra copy of the array is not
+FOLLOW UP
+Write the test cases for this method
+
+Write a method to decide if two strings are anagrams or not
+
+Write a method to replace all spaces in a string with ‘%20’
+
+Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees Can you do this in place?
+
+Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column is set to 0
+
+Assume you have a method isSubstring which checks if one word is a substring of another Given two strings, s1 and s2, write code to check if s2 is a rotation of s1 using only one call to isSubstring (i e , “waterbottle” is a rotation of “erbottlewat”)
+
+Category: Linked Lists
+
+Write code to remove duplicates from an unsorted linked list 
+FOLLOW UP
+How would you solve this problem if a temporary buffer is not allowed?
+
+Implement an algorithm to find the nth to last element of a singly linked list
+
+Implement an algorithm to delete a node in the middle of a single linked list, given only access to that node
+EXAMPLE
+Input: the node ‘c’ from the linked list a->b->c->d->e
+Result: nothing is returned, but the new linked list looks like a->b->d->e
+
+You have two numbers represented by a linked list, where each node contains a single digit The digits are stored in reverse order, such that the 1’s digit is at the head of the list Write a function that adds the two numbers and returns the sum as a linked list
+EXAMPLE
+Input: (3 -> 1 -> 5) + (5 -> 9 -> 2)
+Output: 8 -> 0 -> 8
+
+Given a circular linked list, implement an algorithm which returns node at the beginning of the loop
+DEFINITION
+Circular linked list: A (corrupt) linked list in which a node’s next pointer points to an earlier node, so as to make a loop in the linked list
+EXAMPLE
+input: A -> B -> C -> D -> E -> C [the same C as earlier]
+output: C
+
+Category: Stacks and Queues
+
+Describe how you could use a single array to implement three stacks
+
+How would you design a stack which, in addition to push and pop, also has a function min which returns the minimum element? Push, pop and min should all operate in O(1) time
+
+Imagine a (literal) stack of plates If the stack gets too high, it might topple There- fore, in real life, we would likely start a new stack when the previous stack exceeds some threshold Implement a data structure SetOfStacks that mimics this SetOf- Stacks should be composed of several stacks, and should create a new stack once the previous one exceeds capacity SetOfStacks push() and SetOfStacks pop() should behave identically to a single stack (that is, pop() should return the same values as it would if there were just a single stack)
+FOLLOW UP
+Implement a function popAt(int index) which performs a pop operation on a specific sub-stack
+
+In the classic problem of the Towers of Hanoi, you have 3 rods and N disks of different sizes which can slide on to any tower The puzzle starts with disks sorted in ascending order of size from top to bottom (e g , each disk sits on top of an even larger one) You have the following constraints:
+(A) Only one disk can be moved at a time
+(B) A disk is slid off the top of one rod onto the next rod
+(C) A disk can only be placed on top of a larger disk
+Write a program to move the disks from the first rod to the last using Stacks
+
+Implement a MyQueue class which implements a queue using two stacks
+
+Write a program to sort a stack in ascending order You should not make any assumptions about how the stack is implemented The following are the only functions that should be used to write this program: push | pop | peek | isEmpty
+
+Category: Trees and Graphs
+
+Implement a function to check if a tree is balanced For the purposes of this question, a balanced tree is defined to be a tree such that no two leaf nodes differ in distance from the root by more than one
+
+Given a directed graph, design an algorithm to find out whether there is a route be- tween two nodes
+
+Given a sorted (increasing order) array, write an algorithm to create a binary tree with minimal height
+
+Given a binary search tree, design an algorithm which creates a linked list of all the nodes at each depth (i e , if you have a tree with depth D, you’ll have D linked lists)
+
+Write an algorithm to find the ‘next’ node (i e , in-order successor) of a given node in a binary search tree where each node has a link to its parent
+
+Design an algorithm and write code to find the first common ancestor of two nodes in a binary tree Avoid storing additional nodes in a data structure NOTE: This is not necessarily a binary search tree
+
+You have two very large binary trees: T1, with millions of nodes, and T2, with hun- dreds of nodes Create an algorithm to decide if T2 is a subtree of T1
+
+You are given a binary tree in which each node contains a value Design an algorithm to print all paths which sum up to that value Note that it can be any path in the tree - it does not have to start at the root
+
+Category: Bit Manipulation
+
+You are given two 32-bit numbers, N and M, and two bit positions, i and j Write a method to set all bits between i and j in N equal to M (e g , M becomes a substring of N located at i and starting at j)
+EXAMPLE:
+Input: N = 10000000000, M = 10101, i = 2, j = 6
+Output: N = 10001010100
+
+Given a (decimal - e g 3 72) number that is passed in as a string, print the binary rep- resentation If the number can not be represented accurately in binary, print “ERROR”
+
+Given an integer, print the next smallest and next largest number that have the same number of 1 bits in their binary representation
+
+Explain what the following code does: ((n & (n-1)) == 0)
+
+Write a function to determine the number of bits required to convert integer A to integer B
+Input: 31, 14 Output: 2
+
+Write a program to swap odd and even bits in an integer with as few instructions as possible (e g , bit 0 and bit 1 are swapped, bit 2 and bit 3 are swapped, etc)
+
+An array A[1 n] contains all the integers from 0 to n except for one number which is
+missing In this problem, we cannot access an entire integer in A with a single opera- tion The elements of A are represented in binary, and the only operation we can use to access them is “fetch the jth bit of A[i]”, which takes constant time Write code to find the missing integer Can you do it in O(n) time?
+
+Category: Brain Teasers
+
+Add arithmetic operators (plus, minus, times, divide) to make the following expres- sion true: 3 1 3 6 = 8 You can use any parentheses you’d like
+
+There is an 8x8 chess board in which two diagonally opposite corners have been cut off You are given 31 dominos, and a single domino can cover exactly two squares Can you use the 31 dominos to cover the entire board? Prove your answer (by provid- ing an example, or showing why it’s impossible)
+
+You have a five quart jug and a three quart jug, and an unlimited supply of water (but no measuring cups) How would you come up with exactly four quarts of water?
+NOTE: The jugs are oddly shaped, such that filling up exactly ‘half’ of the jug would be impossible
+
+A bunch of men are on an island A genie comes down and gathers everyone together and places a magical hat on some people’s heads (i e , at least one person has a hat) The hat is magical: it can be seen by other people, but not by the wearer of the hat himself To remove the hat,those(and only those who have a hat)must dunk themselves underwater at exactly midnight If there are n people and c hats, how long does it take the men to remove the hats? The men cannot tell each other (in any way) that they have a hat
+FOLLOW UP
+Prove that your solution is correct
+
+There is a building of 100 floors If an egg drops from the Nth floor or above it will
+break If it’s dropped from any floor below, it will not break You’re given 2 eggs Find N, while minimizing the number of drops for the worst case
+
+There are one hundred closed lockers in a hallway A man begins by opening all one hundred lockers Next, he closes every second locker Then he goes to every third locker and closes it if it is open or opens it if it is closed (e g , he toggles every third locker) After his one hundredth pass in the hallway, in which he toggles only locker number one hundred, how many lockers are open?
+
+Category: Object Oriented Design
+
+Design the data structures for a generic deck of cards Explain how you would sub- class it to implement particular card games
+
+Imagine you have a call center with three levels of employees: fresher, technical lead (TL), product manager (PM) There can be multiple employees, but only one TL or PM
+An incoming telephone call must be allocated to a fresher who is free. If a fresher
+can’t handle the call, he or she must escalate the call to technical lead. If the TL is
+not free or not able to handle it, then the call should be escalated to PM. Design the
+classes and data structures for this problem Implement a method getCallHandler()
+
+Design a musical juke box using object oriented principles
+
+Design a chess game using object oriented principles
+
+Design the data structures for an online book reader system
+
+Implement a jigsaw puzzle Design the data structures and explain an algorithm to solve the puzzle
+
+Explain how you would design a chat server In particular, provide details about the various backend components, classes, and methods What would be the hardest problems to solve?
+
+Othello is played as follows: Each Othello piece is white on one side and black on the other When a piece is surrounded by its opponents on both the left and right sides, or both the top and bottom, it is said to be captured and its color is flipped On your turn, you must capture at least one of your opponent’s pieces The game ends when either user has no more valid moves, and the win is assigned to the person with the most pieces Implement the object oriented design for Othello
+
+Explain the data structures and algorithms that you would use to design an in-memory file system Illustrate with an example in code where possible
+
+Describe the data structures and algorithms that you would use to implement a garbage collector in C++
+
+Category: Recursion
+
+Write a method to generate the nth Fibonacci number
+
+Imagine a robot sitting on the upper left hand corner of an NxN grid The robot can only move in two directions: right and down How many possible paths are there for the robot?
+FOLLOW UP
+Imagine certain squares are “off limits”, such that the robot can not step on them Design an algorithm to get all possible paths for the robot
+
+Write a method that returns all subsets of a set
+
+Write a method to compute all permutations of a string
+
+Implement an algorithm to print all valid (e g , properly opened and closed) combi- nations of n-pairs of parentheses
+EXAMPLE:
+input: 3 (e g , 3 pairs of parentheses)
+output: ()()(), ()(()), (())(), ((()))
+
+Implement the “paint fill” function that one might see on many image editing pro-
+grams That is, given a screen (represented by a 2 dimensional array of Colors), a point, and a new color, fill in the surrounding area until you hit a border of that col- or’
+
+Given an infinite number of quarters (25 cents), dimes (10 cents), nickels (5 cents) and pennies (1 cent), write code to calculate the number of ways of representing n cents
+
+Write an algorithm to print all ways of arranging eight queens on a chess board so that none of them share the same row, column or diagonal
+
+Category: Sorting and Searching
+
+You are given two sorted arrays, A and B, and A has a large enough buffer at the end to hold B Write a method to merge B into A in sorted order
+
+Write a method to sort an array of strings so that all the anagrams are next to each other
+
+Given a sorted array of n integers that has been rotated an unknown number of times,give an O(log n) algorithm that finds an element in the array You may assume that the array was originally sorted in increasing order
+EXAMPLE:
+Input: find 5 in array (15 16 19 20 25 1 3 4 5 7 10 14)
+Output: 8 (the index of 5 in the array)
+
+If you have a 2 GB file with one string per line, which sorting algorithm would you use to sort the file and why?
+
+Given a sorted array of strings which is interspersed with empty strings, write a meth- od to find the location of a given string
+Example: find “ball” in [“at”, “”, “”, “”, “ball”, “”, “”, “car”, “”, “”, “dad”, “”, “”] will return 4 Example: find “ballcar” in [“at”, “”, “”, “”, “”, “ball”, “car”, “”, “”, “dad”, “”, “”] will return -1
+
+Given a matrix in which each row and each column is sorted, write a method to find an element in it
+
+A circus is designing a tower routine consisting of people standing atop one anoth- er’s shoulders For practical and aesthetic reasons, each person must be both shorter and lighter than the person below him or her Given the heights and weights of each person in the circus, write a method to compute the largest possible number of peo- ple in such a tower
+EXAMPLE:
+Input (ht, wt): (65, 100) (70, 150) (56, 90) (75, 190) (60, 95) (68, 110)
+Output: The longest tower is length 6 and includes from top to bottom: (56, 90) (60,95) (65,100) (68,110) (70,150) (75,190)
+
+Category: Mathematical
+
+You have a basketball hoop and someone says that you can play 1 of 2 games Game #1: You get one shot to make the hoop
+Game #2: You get three shots and you have to make 2 of 3 shots
+If p is the probability of making a particular shot, for which values of p should you pick one game or the other?
+
+There are three ants on different vertices of a triangle What is the probability of colli- sion (between any two or all of them) if they start walking on the sides of the triangle?
+Similarly find the probability of collision with ‘n’ ants on an ‘n’ vertex polygon
+
+Given two lines on a Cartesian plane, determine whether the two lines would inter- sect
+
+Write a method to implement *, - , / operations You should use only the + operator
+
+Given two squares on a two dimensional plane, find a line that would cut these two squares in half
+
+Given a two dimensional graph with points on it, find a line which passes the most number of points
+
+Design an algorithm to find the kth number such that the only prime factors are 3, 5, and 7
+
+Category: Testing
+
+Find the mistake(s) in the following code:
+1 unsigned int i;
+2 for(i=100;i<=0;--i) 
+3 printf(“%d\n”, i);
+
+You are given the source to an application which crashes when it is run After running it ten times in a debugger, you find it never crashes in the same place The application is single threaded, and uses only the C standard library What programming errors could be causing this crash? How would you test each one?
+
+We have the following method used in a chess game: boolean canMoveTo(int x, int y) x and y are the coordinates of the chess board and it returns whether or not the piece can move to that position Explain how you would test this method
+
+How would you load test a webpage without using any test tools?
+
+How would you test a pen?
+
+How would you test an ATM in a distributed banking system?
+
+Category: Memory Limits
+
+If you were integrating a feed of end of day stock price information (open, high, low, and closing price) for 5,000 companies, how would you do it? You are responsible for the development, rollout and ongoing monitoring and maintenance of the feed De- scribe the different methods you considered and why you would recommend your approach The feed is delivered once per trading day in a comma-separated format via an FTP site The feed will be used by 1000 daily users in a web application
+
+How would you design the data structures for a very large social network (Facebook, LinkedIn, etc)? Describe how you would design an algorithm to show the connec- tion, or path, between two people (e g , Me -> Bob -> Susan -> Jason -> You)
+
+Given an input file with four billion integers, provide an algorithm to generate an integer which is not contained in the file Assume you have 1 GB of memory
+FOLLOW UP
+What if you have only 10 MB of memory?
+
+You have an array with all the numbers from 1 to N, where N is at most 32,000 The array may have duplicate entries and you do not know what N is With only 4KB of memory available, how would you print all duplicate elements in the array?
+
+If you were designing a web crawler, how would you avoid getting into infinite loops?
+
+You have a billion urls, where each is a huge page How do you detect the duplicate documents?
+
+You have to design a database that can store terabytes of data It should support efficient range queries How would you do it?
+
+Category: C++
+
+Write a method to print the last K lines of an input file using C++
+
+Compare and contrast a hash table vs an STL map How is a hash table implemented? If the number of inputs is small, what data structure options can be used instead of a hash table?
+
+How do virtual functions work in C++?
+
+What is the difference between deep copy and shallow copy? Explain how you would use each
+
+What is the significance of the keyword “volatile” in C?
+
+What is name hiding in C++?
+
+Why does a destructor in base class need to be declared virtual?
+
+Write a method that takes a pointer to a Node structure as a parameter and returns a complete copy of the passed-in data structure The Node structure contains two pointers to other Node structures
+
+Write a smart pointer (smart_ptr) class
+
+Category: Java
+
+In terms of inheritance, what is the effect of keeping a constructor private?
+
+In Java, does the finally block gets executed if we insert a return statement inside the try block of a try-catch-finally?
+
+What is the difference between final, finally, and finalize?
+
+Explain the difference between templates in C++ and generics in Java
+
+Explain what object reflection is in Java and why it is useful
+
+Suppose you are using a map in your program, how would you count the number of times the program calls the put() and get() functions?
+
+Category: Databases
+
+Write a method to find the number of employees in each department
+
+What are the different types of joins? Please explain how they differ and why certain types are better in certain situations
+
+What is denormalization? Explain the pros and cons
+
+Draw an entity-relationship diagram for a database with companies, people, and pro- fessionals (people who work for companies)
+
+Imagine a simple database storing information for students’ grades Design what this database might look like, and provide a SQL query to return a list of the honor roll students (top 10%), sorted by their grade point average
+
+Category: Low Level
+
+Explain the following terms: virtual memory, page fault, thrashing
+
+What is a Branch Target buffer? Explain how it can be used in reducing bubble cycles in cases of branch misprediction
+
+Describe direct memory access (DMA) Can a user level buffer / pointer be used by kernel or drivers?
+
+Write a step by step execution of things that happen after a user presses a key on the keyboard Use as much detail as possible
+
+Write a program to find whether a machine is big endian or little endian
+
+Discuss how would you make sure that a process doesn’t access an unauthorized part of the stack
+
+What are the best practices to prevent reverse engineering of DLLs?
+
+A device boots with an empty FIFO queue In the first 400 ns period after startup, and in each subsequent 400 ns period, a maximum of 80 words will be written to the queue Each write takes 4 ns A worker thread requires 3 ns to read a word, and 2 ns to process it before reading the next word What is the shortest depth of the FIFO such that no data is lost?
+
+Write an aligned malloc & free function that takes number of bytes and aligned byte (which is always power of 2)
+EXAMPLE
+align_malloc (1000,128) will return a memory address that is a multiple of 128 and that points to memory of size 1000 bytes
+aligned_free() will free memory allocated by align_malloc
+
+Write a function called my2DAlloc which allocates a two dimensional array Minimize the number of calls to malloc and make sure that the memory is accessible by the notation arr[i][j]
+
+Category: Networking
+
+Explain what happens, step by step, after you type a URL into a browser. Use as much detail as possible
+
+Explain any common routing protocol in detail For example: BGP, OSPF, RIP
+
+Compare and contrast the IPv4 and IPv6 protocols
+
+What is a network / subnet mask? Explain how host A sends a message / packet to host B when: (a) both are on same network and (b) both are on different networks Explain which layer makes the routing decision and how
+
+What are the differences between TCP and UDP? Explain how TCP handles reliable delivery (explain ACK mechanism), flow control (explain TCP sender’s / receiver’s win- dow) and congestion control
+
+Category: Threads and Locks
+
+What’s the difference between a thread and a process?
+
+How can you measure the time spent in a context switch?
+
+Implement a singleton design pattern as a template such that, for any given class Foo, you can call Singleton::instance() and get a pointer to an instance of a singleton of type Foo Assume the existence of a class Lock which has acquire() and release()
+methods How could you make your implementation thread safe and exception safe?
+
+Design a class which provides a lock only if there are no possible deadlocks
+
+Suppose we have the following code:
+  class Foo {
+  public:
+    A(.....); /* If A is called, a new thread will be created and * the corresponding function will be executed. */
+    B(.....); /* same as above */
+    C(.....); /* same as above */
+  }
+  Foo f;
+  f.A(.....); 
+  f.B(.....); 
+  f.C(.....);
+i) Can you design a mechanism to make sure that B is executed after A, and C is executed after B?
+ii) Suppose we have the following code to use class Foo We do not know how the threads will be scheduled in the OS
+  Foo f;
+  f.A(.....); f.B(.....); f.C(.....); 
+  f.A(.....); f.B(.....); f.C(.....);
+Can you design a mechanism to make sure that all the methods will be executed in sequence?
+
+You are given a class with synchronized method A, and a normal method C If you have two threads in one instance of a program, can they call A at the same time? Can they call A and C at the same time?
+
+Category: Random Moderate
+
+Write a function to swap a number in place without temporary variables
+
+Design an algorithm to figure out if someone has won in a game of tic-tac-toe
+
+Write an algorithm which computes the number of trailing zeros in n factorial
+
+Write a method which finds the maximum of two numbers You should not use if- else or any other comparison operator
+EXAMPLE
+Input: 5, 10
+Output: 10
+
+The Game of Master Mind is played as follows:
+The computer has four slots containing balls that are red (R), yellow (Y), green (G) or blue (B) For example, the computer might have RGGB (e g , Slot #1 is red, Slots #2 and #3 are green, Slot #4 is blue)
+You, the user, are trying to guess the solution You might, for example, guess YRGB
+When you guess the correct color for the correct slot, you get a “hit” If you guess a color that exists but is in the wrong slot, you get a “pseudo-hit” For example, the guess YRGB has 2 hits and one pseudo hit
+For each guess, you are told the number of hits and pseudo-hits
+Write a method that, given a guess and a solution, returns the number of hits and pseudo hits
+
+Given an integer between 0 and 999,999, print an English phrase that describes the integer (eg, “One Thousand, Two Hundred and Thirty Four”)
+
+You are given an array of integers (both positive and negative) Find the continuous sequence with the largest sum Return the sum
+EXAMPLE
+Input: {2, -8, 3, -2, 4, -10}
+Output: 5 (i e , {3, -2, 4} )
+
+Design a method to find the frequency of occurrences of any given word in a book
+
+Since XML is very verbose, you are given a way of encoding it where each tag gets mapped to a pre-defined integer value The language/grammar is as follows:
+Element --> Element Attr* END Element END [aka, encode the element tag, then its attributes, then tack on an END character, then encode its children, then another end tag]
+Attr --> Tag Value [assume all values are strings] END --> 01
+Tag --> some predefined mapping to int
+Value --> string value END
+Write code to print the encoded version of an xml element (passed in as string)
+FOLLOW UP
+Is there anything else you could do to (in many cases) compress this even further?
+
+Write a method to generate a random number between 1 and 7, given a method that generates a random number between 1 and 5 (i e , implement rand7() using rand5())
+
+Design an algorithm to find all pairs of integers within an array which sum to a specified value
+
+Category: Random Hard
+
+Write a function that adds two numbers You should not use + or any arithmetic operators
+
+Write a method to shuffle a deck of cards It must be a perfect shuffle - in other words, each52!permutations of the deck has to be equally likely. Assume that you are given a random number generator which is perfect
+
+Write a method to randomly generate a set of m integers from an array of size n Each element must have equal probability of being chosen
+
+Write a method to count the number of 2s between 0 and n
+
+You have a large text file containing words Given any two words, find the shortest distance (in terms of number of words) between them in the file Can you make the searching operation in O(1) time? What about the space complexity for your solu- tion?
+
+Describe an algorithm to find the largest 1 million numbers in 1 billion numbers As- sume that the computer memory can hold all one billion numbers
+
+Write a program to find the longest word made of other words in a list of words
+EXAMPLE
+Input: test, tester, testertest, testing, testingtester
+Output: testingtester
+
+Given a string s and an array of smaller strings T, design a method to search s for each small string in T
+
+Numbers are randomly generated and passed to a method Write a program to find and maintain the median value as new values are generated
+
+Given two words of equal length that are in a dictionary, write a method to transform one word in to another word by changing only one letter at a time. The new word you get in each step must be in the dictionary
+EXAMPLE
+Input: DAMP, LIKE
+Output: DAMP -> LAMP -> LIMP -> LIME -> LIKE
+
+Imagine you have a square matrix, where each cell is filled with either black or white Design an algorithm to find the maximum subsquare such that all four borders are filled with black pixels
+
+Given an NxN matrix of positive and negative integers, write code to find the sub- matrix with the largest possible sum
+
+Given a dictionary of millions of words, give an algorithm to find the largest possible rectangle of letters such that every row forms a word (reading left to right) and every column forms a word (reading top to bottom)
+

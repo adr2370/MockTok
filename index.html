@@ -102,13 +102,9 @@
 					}
 					i++;
 				}
-				for(var i=0;i<questions.length;i++) { 
-					/*var stringAdd="<li><ol><li>"+questions[i][0]+"</li>";
-					for(var j=1;j<questions[i].length;j++) { 
-						stringAdd+="<li>"+questions[i][j]+"</li>";
-					}
-					stringAdd+="</ol></li>";*/
-					var stringAdd="<li id='category"+(i+1)+"'><a onclick='slide("+(i+1)+")'>"+questions[i][0]+"</a></li><li id=question"+(i+1)+" style='display:none;'>"questions[i][Math.floor(Math.random()*(questions[i].length-1)+1)].replace(/\n/g, '<br />')"</li>";
+				for(var i=0;i<questions.length;i++) {
+					var question=questions[i][Math.floor(Math.random()*(questions[i].length-1)+1)].replace(/\n/g, '<br />');
+					var stringAdd="<li id='category"+(i+1)+"'><a onclick='slide("+(i+1)+")'>"+questions[i][0]+"</a></li><li id=question"+(i+1)+" style='display:none;'>"+question+"</li>";
 					$("#questionsList").append(stringAdd);
 				}
 			});
@@ -119,7 +115,6 @@
 					}
 				}
 				$("#question"+x).slideDown();
-				console.log(x);
 			}
 		</script>
 

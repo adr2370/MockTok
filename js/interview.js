@@ -7,11 +7,12 @@ function sessionConnectedHandler(event) {
 	 subscribeToStreams(event.streams);
 	var div = document.createElement('div');
 	     div.setAttribute('id', 'publisher');
-		div.setAttribute('style', 'margin-top:50px;margin-left:50px;width:300px;height:400px;');
+		div.setAttribute('style', 'margin-top:50px;margin-left:50px;');
 	     var publisherContainer = document.getElementById('publisherContainer');
 	         // This example assumes that a publisherContainer div exists
 	     publisherContainer.appendChild(div);
-	     publisher = TB.initPublisher(apiKey, 'publisher');
+	var publisherProperties = {width: 400, height:300};
+	     publisher = TB.initPublisher(apiKey, 'publisher'.publisherProperties);
 	     session.publish(publisher);
 }
 function streamCreatedHandler(event) {
@@ -36,7 +37,8 @@ function displayStream(stream) {
 	div.setAttribute('style', 'margin-top:50px;margin-left:50px;width:300px;height:400px;');
     var streamsContainer = document.getElementById('streamsContainer');
     streamsContainer.appendChild(div);
-    subscriber = session.subscribe(stream, 'stream' + stream.streamId);
+var subscriberProperties = {width: 400, height:300};
+    subscriber = session.subscribe(stream, 'stream' + stream.streamId,subscriberProperties);
 }
 function exceptionHandler(event) {
 	console.log(event.message);

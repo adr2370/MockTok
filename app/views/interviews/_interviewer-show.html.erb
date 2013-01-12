@@ -1,5 +1,4 @@
-<script>interview(false, "TEST_USER", "<%= @interview.session_id %>", "<%= @openTokToken %>", 15)</script>
-<%= link_to "Done", :action => :interview_done, :controller => :interviews, :id => @interview.id %>
+<script>interview(<%= @interview.id %>, true, "TEST_USER", "<%= @interview.session_id %>", "<%= @openTokToken %>", 15)</script>
 
 <style>
 .dropup-menu {

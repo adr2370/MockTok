@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130112155242) do
+ActiveRecord::Schema.define(:version => 20130112215249) do
 
   create_table "interviews", :force => true do |t|
     t.integer  "expected_time"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20130112155242) do
     t.integer  "identee_score"
     t.string   "identer_comments"
     t.string   "identee_comments"
+    t.string   "archive_id"
   end
 
   create_table "users", :force => true do |t|

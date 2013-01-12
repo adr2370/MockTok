@@ -8,7 +8,10 @@ class Interview < ActiveRecord::Base
   				  :identee_score, 
   				  :identer_score,
   				  :identee_comments,
-  				  :identer_comments
+  				  :identer_comments,
+            :archiveID,
+            :interviewerConnID,
+            :intervieweeConnID
 
   validates :expected_time, :presence => true
   validates :identee_score, :allow_nil => true, :inclusion => { :in => 0..10 }

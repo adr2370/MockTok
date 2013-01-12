@@ -6,17 +6,20 @@ class User < ActiveRecord::Base
   validates :singly_id, :presence => true
 
 
-  def findOpenInterview( timespan )
-  	@interviews = Interview.where( "waiting=? AND expected_time=?", true, timespan )
-  	if @interviews == [] or @interviews.nil?
-  		nil
-		else
-		  @interview = @interviews.first
-      @interview.identee = self.id
-    	@interview.waiting = false
+  def findOpenInterview( interviewer, timespan )
+    @interviews = Interview.where( "waiting=? AND expected_time=?", true, timespan )
+    if @interviews == [] or @interviews.nil?
+      nil
+    else
+      @interview = @interviews.first
+      if interviewer
+        @interview.identer = self.id
+      else
+        @interview.identee = self.id
+      end
+      @interview.waiting = false
       @interview.save!
-    	@interview
-  	end
+      @interview
+    end
   end
-
 end

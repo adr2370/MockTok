@@ -40,9 +40,24 @@ class InterviewsController < ApplicationController
   # POST /interviews
   # POST /interviews.json
   def create
-    if (params[:role] == "Interviewer")
-      @interview = Interview.new(params[:interview], :identer => session[:user_id], :identee => nil )
-      @interview.identer = session[:user_id]
+    @interviewer = params[:role] == "Interviewer"
+    @interview = User.find( session[:user_id] ).findOpenInterview( @interviewer, params[:timespan] )
+    if @interview
+      Pusher['private-interview' + @interview.id].trigger("message", {
+        :user_id => session[:user_id],
+        :text => "Match Found!"
+      })
+      respond_to do |format|
+        format.html { redirect_to :action => :show, :id => @interview.id, notice: 'Interview was successfully found.' }
+        format.json { render json: @interview, status: :created, location: @interview }
+      end
+    else
+      @interview = Interview.new(params[:interview], :identer => nil, :identee => nil )
+      if @interviewer
+        @interview.identer = session[:user_id]
+      else
+        @interview.identee = session[:user_id]
+      end
       @interview.session_id = OTSDK.createSession( request.ip ).to_s
       respond_to do |format|
         if @interview.save
@@ -53,11 +68,39 @@ class InterviewsController < ApplicationController
           format.json { render json: @interview.errors, status: :unprocessable_entity }
         end
       end
-    else 
-      redirect_to :action => :waiting, :controller => :interviews, :timespan => params[:interview][:expected_time]
     end
   end
-
+  
+  def auth
+    @channel = params[:channel_name][17..]
+    @interview = Interview.find(@channel)
+    if @interview.identer == session[:user_id] or @interview.identee == session[:user_id]
+      response = channel.authenticate(params[:socket_id], {
+        :user_id => session[:user_id],
+        :user_info => {}
+      })
+      render :json => response
+    else
+      render :text => "Not authorized", :status => '403'
+    end
+  end
+  
+  def webhook
+    webhook = Pusher::WebHook.new(request)
+    if webhook.valid?
+      webhook.events.each do |event|
+        if event["name"] == 'channel_vacated'
+          @channel = event["channel"][17..]
+          @interview = Interview.find(@channel)
+          @interview.waiting = false
+          @interview.save!
+        end
+      end
+    else
+      status 401
+    end
+  end
+  
   # PUT /interviews/1
   # PUT /interviews/1.json
   def update

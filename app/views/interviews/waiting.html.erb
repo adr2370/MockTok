@@ -1,32 +1,42 @@
-<h1>Currently finding a match, hang tight!<p>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pusher/1.12.5/pusher.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/spin.js/1.2.7/spin.min.js"></script>
+<script>
+$.fn.spin = function(opts) {
+  this.each(function() {
+    var $this = $(this),
+        data = $this.data();
 
-<% if @interview_timespan %>
-	<script>
-	// if current user is interviewEE, ping server every 5 seconds with findOpenInterview, which renders interviewee-show when done
-	setInterval(function(){findOpenInterview()},1000)
-	function findOpenInterview()
-	{
-		$.ajax({ type: "POST", url: "/interviews/findOpenInterview", data: { timespan: "<%= @interview_timespan %>" }
-			}).done(function(data) {
-				if ( data.id > 0 ) {
-					window.location = "/interviews/" + data.id
-				}
-			});
+    if (data.spinner) {
+      data.spinner.stop();
+      delete data.spinner;
+    }
+    if (opts !== false) {
+      data.spinner = new Spinner($.extend({color: $this.css('color')}, opts)).spin(this);
+    }
+  });
+  return this;
+};
+</script>
 
-	}
-	</script>
-<% else %>
-	<script>
-	// if current user is interviewER, ping server every 5 seconds with goToInterviewIfReady, which renders interviewer-show IF found 
-	setInterval(function(){goToInterviewIfReady()},1000)
-	function goToInterviewIfReady()
-	{
-		$.ajax({ type: "POST", url: "/interviews/goToInterviewIfReady", data: { interview_id: "<%= @interview_id %>" }
-			}).done(function(data) {
-				if ( data.id > 0 ) {
-					window.location = "/interviews/" + data.id
-				}
-			});
-	}
-	</script>
-<% end %>
+<h1 id="msg">Connecting to negotiator...</h1>
+<div id="spinner"></div>
+
+<script>
+$("#spinner").spin({
+  length: 30, // The length of each line
+  width: 5, // The line thickness
+});
+
+var pusher = new Pusher('fa0830a623dad399d7f6');
+var channel = pusher.subscribe("private-interview<%= @interview_id %>");
+channel.bind("pusher:subscription_succeeded", function() {
+    $("#msg").text("Finding partner...");
+});
+channel.bind('pusher:subscription_error', function() {
+    $("#msg").text("Failed to connect :(");
+    $("#spinner").spin(false);
+});
+channel.bind("message", function(data) {
+    window.location = "/interviews/<%= @interview_id %>";
+});
+</script>

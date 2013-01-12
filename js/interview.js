@@ -13,7 +13,7 @@ function sessionConnectedHandler(event) {
 	     publisherContainer.appendChild(div);
 
 	     var publisherProperties = {width: 400, height:300, name:"Bob's stream"};
-	     publisher = TB.initPublisher(API_KEY, 'publisher', publisherProperties);
+	     publisher = TB.initPublisher(apiKey, 'publisher', publisherProperties);
 	     session.publish(publisher);
 }
 function streamCreatedHandler(event) {

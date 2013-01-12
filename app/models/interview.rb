@@ -11,6 +11,7 @@ class Interview < ActiveRecord::Base
   				  :identer_comments
 
   validates :expected_time, :presence => true
-  validates_inclusion_of :identee_score, :in => 1..10
-  validates_inclusion_of :identer_score, :in => 1..10
+  validates :identee_score, :allow_nil => true, :inclusion => { :in => 0..10 }
+  validates :identer_score, :allow_nil => true, :inclusion => { :in => 0..10 }
+
 end

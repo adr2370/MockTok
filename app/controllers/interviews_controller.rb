@@ -64,6 +64,8 @@ class InterviewsController < ApplicationController
         @interview.identee = session[:user_id]
       end
       @interview.session_id = OTSDK.createSession( request.ip ).to_s
+      @interview.identee_score = 1
+      @interview.identer_score = 1
       respond_to do |format|
         if @interview.save
           format.html { redirect_to :action => :waiting, :interview_id => @interview.id, notice: 'Interview was successfully created.' }

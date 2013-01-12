@@ -92,8 +92,8 @@ class UsersController < ApplicationController
   def playback
     @user = User.find(session[:user_id])
     @interview = Interview.find(params[:interview_id])
-    @identer = User.find(params[:identer])
-    @identee = User.find(params[:identee])
+    @identer = User.find(@interview.identer)
+    @identee = User.find(@interview.identee)
   end
 
 end

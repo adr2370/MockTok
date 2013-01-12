@@ -14,7 +14,7 @@ class InterviewsController < ApplicationController
   # GET /interviews/1.json
   def show
     @interview = Interview.find(params[:id])
-
+    @openTokToken = OTSDK.generateToken :session_id => @interview.session_id, :role => OpenTok::RoleConstants::MODERATOR
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @interview }
@@ -43,6 +43,7 @@ class InterviewsController < ApplicationController
     if (params[:role] == "interviewer")
       @interview = Interview.new(params[:interview], :identer => session[:user_id], :identee => nil )
       @interview.identer = session[:user_id]
+      @interview.session_id = OTSDK.createSession( request.ip ).to_s
       respond_to do |format|
         if @interview.save
           format.html { redirect_to :action => :waiting, :interview_id => @interview.id, notice: 'Interview was successfully created.' }

@@ -337,3 +337,26 @@ Write a function that adds two numbers You should not use + or any arithmetic op
 
 Write a method to shuffle a deck of cards It must be a perfect shuffle - in other words, each52!permutations of the deck has to be equally likely. Assume that you are given a random number generator which is perfect
 
+Write a method to randomly generate a set of m integers from an array of size n Each element must have equal probability of being chosen
+
+Write a method to count the number of 2s between 0 and n
+
+You have a large text file containing words Given any two words, find the shortest distance (in terms of number of words) between them in the file Can you make the searching operation in O(1) time? What about the space complexity for your solu- tion?
+
+Describe an algorithm to find the largest 1 million numbers in 1 billion numbers As- sume that the computer memory can hold all one billion numbers
+
+Write a program to find the longest word made of other words in a list of wordsEXAMPLEInput: test, tester, testertest, testing, testingtesterOutput: testingtester
+
+Given a string s and an array of smaller strings T, design a method to search s for each small string in T
+
+Numbers are randomly generated and passed to a method Write a program to find and maintain the median value as new values are generated
+
+Given two words of equal length that are in a dictionary, write a method to transform one word in to another word by changing only one letter at a time. The new word you get in each step must be in the dictionaryEXAMPLE
+Input: DAMP, LIKEOutput: DAMP -> LAMP -> LIMP -> LIME -> LIKE
+
+Imagine you have a square matrix, where each cell is filled with either black or white Design an algorithm to find the maximum subsquare such that all four borders are filled with black pixels
+
+Given an NxN matrix of positive and negative integers, write code to find the sub- matrix with the largest possible sum
+
+Given a dictionary of millions of words, give an algorithm to find the largest possible rectangle of letters such that every row forms a word (reading left to right) and every column forms a word (reading top to bottom)
+

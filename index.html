@@ -71,6 +71,10 @@
 		</li>
 		</ul>
 		<script type="text/javascript">
+		$('.dropdown-menu input, .dropdown-menu label').click(function(e) {
+		        e.stopPropagation();
+		    });
+		
 			var q;
 			var questions=new Array();
 			$.get("questions.txt", function(data) {
@@ -105,9 +109,6 @@
 					$("#questionsList").append(stringAdd);
 				}
 			});
-			$('.dropdown-menu').click(function(event){
-			     event.stopPropagation();
-			 });​
 			function slide(x) {
 				for(var i=0;i<=20;i++) {
 					if(i!=x) {

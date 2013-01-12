@@ -72,10 +72,11 @@ class InterviewsController < ApplicationController
   end
   
   def auth
-    @channel = params[:channel_name][17..]
-    @interview = Interview.find(@channel)
+    channelName = params[:channel_name][17..-1]
+    @channel = Pusher[params[:channel_name]]
+    @interview = Interview.find(channelName)
     if @interview.identer == session[:user_id] or @interview.identee == session[:user_id]
-      response = channel.authenticate(params[:socket_id], {
+      response = @channel.authenticate(params[:socket_id], {
         :user_id => session[:user_id],
         :user_info => {}
       })
@@ -87,10 +88,23 @@ class InterviewsController < ApplicationController
   
   def webhook
     webhook = Pusher::WebHook.new(request)
+    p "webhook received!~"
+    p "webhook received!~"
+    p webhook
+    p "webhook received!~"
+    p "webhook received!~"
+    p "webhook received!~"
     if webhook.valid?
       webhook.events.each do |event|
+        p "channel vacated!"
+          p "channel vacated!"
+            p "channel vacated!"
+              p "channel vacated!"
+                p "channel vacated!"
+                  p "channel vacated!"
+                    p "channel vacated!"
         if event["name"] == 'channel_vacated'
-          @channel = event["channel"][17..]
+          @channel = event["channel"][17..-1]
           @interview = Interview.find(@channel)
           @interview.waiting = false
           @interview.save!

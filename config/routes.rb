@@ -3,6 +3,8 @@ MockTok::Application.routes.draw do
 
   root :to => 'pages#signup'
   match '/signup', to: 'pages#signup'
+  match '/interviews/auth', to: 'interviews#auth'
+  match '/interviews/webhook', to: 'interviews#webhook'
 
   resources :users do
     collection do

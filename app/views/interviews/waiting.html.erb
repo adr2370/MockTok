@@ -27,6 +27,8 @@ $("#spinner").spin({
   width: 5, // The line thickness
 });
 
+// Pusher.channel_auth_transport = 'jsonp';
+Pusher.channel_auth_endpoint = '/interviews/auth';
 var pusher = new Pusher('fa0830a623dad399d7f6');
 var channel = pusher.subscribe("private-interview<%= @interview_id %>");
 channel.bind("pusher:subscription_succeeded", function() {

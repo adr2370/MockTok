@@ -85,17 +85,6 @@ class InterviewsController < ApplicationController
     end
   end
 
-  # TODO
-  def findOpenInterview
-    Rails.logger.info("@@@@@@@@@@@@@@@@@@@@ FINDING INTERVIEW")
-    @interview = User.findOpenInterview( params[:timespan] )
-    if @interview
-      redirect_to :interview, :layout => false, :locals => { :interview => @interview }
-    else
-      nil
-    end
-  end
-
   def waiting
     if params[:timespan]
       @interview_timespan = params[:timespan]
@@ -106,6 +95,17 @@ class InterviewsController < ApplicationController
       redirect_to :action => :new
     end
 
+  end
+
+  # TODO
+  def findOpenInterview
+    Rails.logger.info("@@@@@@@@@@@@@@@@@@@@ FINDING INTERVIEW")
+    @interview = User.findOpenInterview( params[:timespan] )
+    if @interview
+      redirect_to :interview, :layout => false, :locals => { :interview => @interview }
+    else
+      nil
+    end
   end
 
   # TODO

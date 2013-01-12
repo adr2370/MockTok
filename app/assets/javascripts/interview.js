@@ -88,9 +88,9 @@ function interview(id, interviewer, username, session, token, length) {
     var tokboxRecord = function() {
         tokbox.startRecording(archive);
         // Publish the data to the server for later playback
-        $.ajax("/interviews/" + id, {
+        $.ajax("/interviews/" + id+".json", {
           type: "PUT",
-          data: { interview: { archiveID: archive.archiveID }}
+          data: { interview: { archive_id: archive.archiveID }}
         });
     }
 
@@ -108,7 +108,7 @@ function interview(id, interviewer, username, session, token, length) {
                     tokboxRecord();
             });
             // Create a session archive so that interviewer is in charge
-            tokbox.createArchive(tokbox_apikey, "perSession", session);
+            tokbox.createArchive(apikey, "perSession", session);
         }
     });
     

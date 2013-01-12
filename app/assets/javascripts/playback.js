@@ -55,6 +55,7 @@ TB.setLogLevel( TB.DEBUG );
             tokbox.subscribe(stream, id, {width: $(window).height()*2/3-1, height: $(window).height()/2-1});
             $("#video object:first-child").attr('style','outline: none;position: absolute;left: 0px;top: 0px;');
             $("#video object:last-child").attr('style','outline: none;position: absolute;left: 0px;top: '+$(window).height()/2+'px;');
+            $(".CodeMirror").attr('style',"position: absolute;right: 0px;top: 0px;height: "+($(window).height()-1)+"px;width: "+($(window).width()-$(window).height()*2/3)+"px");
         });
     });
 

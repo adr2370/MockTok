@@ -94,7 +94,6 @@ class InterviewsController < ApplicationController
       puts "THIS SHOULD NEVER HAPPEN FUUUUUUUUCK"
       redirect_to :action => :new
     end
-
   end
 
   # TODO

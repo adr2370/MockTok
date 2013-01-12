@@ -6,8 +6,9 @@
 	setInterval(function(){findOpenInterview()},5000)
 	function findOpenInterview()
 	{
-		$.ajax({ type: "POST", url: "localhost:3000/interviews/findOpenInterview", data: { timespan: @interview_timespan }
+		$.ajax({ type: "POST", url: "/interviews/findOpenInterview", data: { timespan: "<%= @interview_timespan %>" }
 			}).done(function() {});
+
 	}
 	</script>
 <% else %>
@@ -16,8 +17,8 @@
 	setInterval(function(){goToInterviewIfReady()},5000)
 	function goToInterviewIfReady()
 	{
-		$.ajax({ type: "POST", url: "localhost:3000/interviews/goToInterviewIfReady", data: { interview_id: @interview_id }
-			}).done(function() {});
+		$.ajax({ type: "POST", url: "/interviews/goToInterviewIfReady", data: { interview_id: "<%= @interview_id %>" }
+			}).done(function(html) {});
 	}
 	</script>
 <% end %>

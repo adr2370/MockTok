@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   validates :singly_id, :presence => true
 
 
-  def findOpenInterview( timespan )
+  def self.findOpenInterview( timespan )
   	@interviews = Interview.find( :all, :waiting => true, :order => "created_at desc" ).first
   	if @interviews == []
   		nil

@@ -64,7 +64,7 @@
 		<li class="dropdown" style="position: absolute;right: 0px;bottom: 0px;">
 		  <a href="#" data-toggle="dropdown" class="dropdown-toggle">Suggested Question<b class="caret up"></b></a>
 		<ul id="questionsList" class="dropdown-menu dropup-menu" style="left: -18%;text-align: right;">
-			<li id="category0"><a onclick="slide(0)">
+			<li id="category0"><a>
 				Select Category:
 			</a></li>
 		</ul>
@@ -106,6 +106,11 @@
 				}
 			});
 			function slide(x) {
+				for(var i=0;i<=20;i++) {
+					if(i!=x) {
+						$("#category"+i).slideUp();
+					}
+				}
 				console.log(x);
 			}
 		</script>

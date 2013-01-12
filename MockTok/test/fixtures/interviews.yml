@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  expected_time: 1
+  waiting: 
+  finished_at: 2013-01-11 16:54:37
+
+two:
+  expected_time: 1
+  waiting: 
+  finished_at: 2013-01-11 16:54:37

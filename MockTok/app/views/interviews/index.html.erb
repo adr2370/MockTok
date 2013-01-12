@@ -1,0 +1,27 @@
+<h1>Listing interviews</h1>
+
+<table>
+  <tr>
+    <th>Expected time</th>
+    <th>Waiting</th>
+    <th>Finished at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @interviews.each do |interview| %>
+  <tr>
+    <td><%= interview.expected_time %></td>
+    <td><%= interview.waiting %></td>
+    <td><%= interview.finished_at %></td>
+    <td><%= link_to 'Show', interview %></td>
+    <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
+    <td><%= link_to 'Destroy', interview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Interview', new_interview_path %>

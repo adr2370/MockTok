@@ -30,8 +30,7 @@
 
 		<script type="text/javascript">
 			var q;
-			var questions=new Object();
-			questions.categories=new Array();
+			var questions=new Array();
 			$.get("questions.txt", function(data) {
 				var currCategory='';
 				for(var i=0;i<data.length;i++) {
@@ -44,20 +43,16 @@
 						currCategory=data.substring(start,i);
 						var currCate=new Array();
 						currCate.push(currCategory);
-						questions.categories.push(currCate);
+						questions.push(currCate);
 					} else {
 						var questionStart=i;
 						while(i<data.length-1&&!(data[i].charCodeAt(0)==10&&data[i+1].charCodeAt(0)==10)) {
 							i++;
 						}
-						if(i<data.length-1)
-							console.log(data[i].charCodeAt(0)+" "+data[i+1].charCodeAt(0));
-						questions.categories[questions.categories.length-1].push(data.substring(questionStart,i-1));
+						questions[questions.length-1].push(data.substring(questionStart,i-1));
 					}
 					i++;
 				}
-				q=data;
-				console.log(questions);
 			});
 		</script>
 

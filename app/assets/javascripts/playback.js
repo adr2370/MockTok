@@ -3,8 +3,8 @@
  * session: string, tokbox session ID. Also used by firebase & archive
  * token: string, tokbox user token. Should be moderator for interviewer, publisher for interviewee
  * archive: string, the archive ID
- * interviewer: string, interviewer connection ID
- * interviewee: string, interviewee connection ID
+ * interviewer: string, interviewer user ID
+ * interviewee: string, interviewee user ID
  */
 function playback(session, token, archive, interviewer, interviewee) {
     var apikey = "22493452"; // Tokbox API key constant
@@ -44,9 +44,18 @@ function playback(session, token, archive, interviewer, interviewee) {
     // Subscribe to interviewer & interviewee streams
     tokbox.addEventListener("streamCreated", function(e) {
         e.streams.forEach(function(stream) {
-            if(stream.connection.connectionId != interviewer && stream.connection.connectionId != interviewee)
+            if(stream.connection.data != interviewer && stream.connection.data != interviewee)
                 return;
-            tokbox.subscribe(stream, stream.connection.connectionId != interviewee ? "video_interviewee" : "video_interviewer", {width: 400, height: 300});
+            // Point it to the right div
+            var isInterviewer = stream.connection.data == interviewer;
+            var container = $("<div>").attr("id","video_" + isInterviewer ? "interviewer" : "interviewee");
+            if(isInterviewer)
+                $("#video").append(container);
+            else
+                $("#video").prepend(container);
+            tokbox.subscribe(stream, "video_subscriber", {width: $(window).height()*2/3-1, height: $(window).height()/2-1});
+            $("#video object:first-child").attr('style','outline: none;position: absolute;left: 0px;top: 0px;');
+            $("#video object:last-child").attr('style','outline: none;position: absolute;left: 0px;top: '+$(window).height()/2+'px;');
         });
     });
 

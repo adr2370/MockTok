@@ -1,4 +1,5 @@
 class InterviewsController < ApplicationController
+
   # GET /interviews
   # GET /interviews.json
   def index
@@ -14,10 +15,14 @@ class InterviewsController < ApplicationController
   # GET /interviews/1.json
   def show
     @interview = Interview.find(params[:id])
-    @openTokToken = OTSDK.generateToken :session_id => @interview.session_id, :role => OpenTok::RoleConstants::MODERATOR
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @interview }
+    if @interview.identer == session[:user_id] or @interview.identee == session[:user_id]
+      @openTokToken = OTSDK.generateToken :session_id => @interview.session_id, :role => OpenTok::RoleConstants::MODERATOR
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @interview }
+      end
+    else
+      render 'application/unauthorized', :status => :unauthorized
     end
   end
 
@@ -154,7 +159,31 @@ class InterviewsController < ApplicationController
     end
   end
 
-  # TODO
+  def interview_done
+    # TODO save video, text
+    @interview = Interview.find(params[:id])
+    @interview.finished_at = Time.now
+    @interview.save
+    render "review"
+  end
+
+  def interviewer_review
+    @interview = Interview.find(params[:id])
+    @interview.identer_score = params[:identer_score]
+    @interview.identer_comments = params[:identer_comments]
+    @interview.save
+    redirect_to :action => :signup, :controller => :pages
+  end
+
+  def interviewee_review
+    @interview = Interview.find(params[:id])
+    @interview.identee_score = params[:identee_score]
+    @interview.identee_comments = params[:identee_comments]
+    @interview.save
+    redirect_to :action => :signup, :controller => :pages
+  end
+
+  
   def findOpenInterview
     
     @interview = User.find( session[:user_id] ).findOpenInterview( params[:timespan] )
@@ -165,7 +194,6 @@ class InterviewsController < ApplicationController
     end
   end
 
-  # TODO
   def goToInterviewIfReady
     @interview = Interview.find(params[:interview_id])
     unless ( @interview.identee.nil? ) 

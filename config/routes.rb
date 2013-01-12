@@ -21,6 +21,14 @@ MockTok::Application.routes.draw do
       post 'goToInterviewIfReady'
       get 'waiting'
       post 'waiting'
+      get 'interview_done'
+      post 'interview_done'
+      get 'review'
+      post 'review'
+      get 'interviewer_review'
+      post 'interviewer_review'
+      get 'interviewee_review'
+      post 'interviewee_review'
     end
   end
 

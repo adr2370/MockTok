@@ -1,0 +1,35 @@
+<% if @interview.identer == session[:user_id] %>
+
+	<%= form_tag interview_interviewer_review_path, :method => :post do %>
+	    <div class="field">
+	        <%= number_field_tag "identer_score" %>
+	    </div>
+	    <div class="field">
+	    	<%= label_tag "Comments on interviewee" %>
+	        <%= text_field_tag "identer_comments" %>
+	    </div>
+	    <%= hidden_field_tag :id, :value => @interview.id %>
+	    <div class="actions">
+	        <%= submit_tag "Submit", :class => "button" %>
+	    </div>
+	<% end %>
+
+
+<% else %>
+
+	<%= form_tag interview_interviewee_review_path, :method => :post do %>
+	    <div class="field">
+	        <%= number_field_tag "identee_score" %>
+	    </div>
+	    <div class="field">
+	    	<%= label_tag "Comments on interviewer" %>
+	        <%= text_field_tag "identee_comments"  %>
+	    </div>
+		<%= hidden_field_tag :id, :value => @interview.id %>
+	    <div class="actions">
+	        <%= submit_tag "Submit", :class => "button", :id => @interview.id %>
+	    </div>
+	<% end %>
+
+
+<% end %>

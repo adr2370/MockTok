@@ -1,7 +1,4 @@
-
-<p id="notice"><%= notice %></p>
-
-<% if session[:user] == @interview.interviewee %>
+<% if session[:user_id] == @interview.identee %>
 	<%= render :partial => 'interviewee-show' %>
 <% else %> 
 	<%= render :partial => 'interviewer-show' %>

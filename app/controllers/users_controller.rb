@@ -83,7 +83,7 @@ class UsersController < ApplicationController
 
   def login_or_create
     @user = User.find_or_create_by_singly_id(params[:userId])
-    session[:user] = @user
+    session[:user_id] = @user.id
     redirect_to :action => :new, :controller => :interviews
   end
 

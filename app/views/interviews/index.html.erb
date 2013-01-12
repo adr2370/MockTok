@@ -6,6 +6,8 @@
     <th>Waiting</th>
     <th>Finished at</th>
     <th>id</th>
+    <th>interviewer</th>
+    <th>interviewee</th>
     <th>created_at</th>
     <th></th>
     <th></th>
@@ -17,6 +19,8 @@
     <td><%= interview.waiting %></td>
     <td><%= interview.finished_at %></td>
 	    <td><%= interview.id %></td>
+		    <td><%= interview.identer %></td>
+			    <td><%= interview.identee %></td>
 		    <td><%= interview.created_at %></td>
     <td><%= link_to 'Show', interview %></td>
     <td><%= link_to 'Edit', edit_interview_path(interview) %></td>

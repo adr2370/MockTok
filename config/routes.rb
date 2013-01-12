@@ -16,6 +16,9 @@ MockTok::Application.routes.draw do
   end
 
   resources :interviews do
+    member do
+      get 'playback'
+    end
     collection do
       get 'findOpenInterview'
       post 'findOpenInterview'

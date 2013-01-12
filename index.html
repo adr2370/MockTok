@@ -48,12 +48,12 @@
 					} else {
 						var questionStart=i;
 						while(i<data.length-1&&(data[i]!='\n'||data[i+1]!='\n')) {
+							console.log(data[i]+" "+data[i+1]);
 							i++;
 						}
 						questions.categories[questions.categories.length-1].push(data.substring(questionStart,i-questionStart));
 					}
 				}
-				console.log(data);
 				console.log(questions);
 			});
 		</script>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CodeMirror: Match Highlighter Demo</title>
+    <link rel="stylesheet" href="../lib/codemirror.css">
+    <script src="../lib/codemirror.js"></script>
+    <script src="../lib/util/searchcursor.js"></script>
+    <script src="../lib/util/match-highlighter.js"></script>
+    <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
+
+    <link rel="stylesheet" href="../doc/docs.css">
+
+    <style type="text/css">
+      .CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}
+    
+      span.CodeMirror-matchhighlight { background: #e9e9e9 }
+      .CodeMirror-focused span.CodeMirror-matchhighlight { background: #e7e4ff; !important }
+    </style>
+  </head>
+  <body>
+    <h1>CodeMirror: Match Highlighter Demo</h1>
+
+    <form><textarea id="code" name="code"></textarea></form>
+
+    <script type="text/javascript">
+      var fireBase = new Firebase('https://mocktok.firebaseio.com/');
+      var sessionId = 5;
+      var myDataRef = fireBase.child(sessionId);
+
+      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {lineNumbers : true});
+
+      var latest = 0;
+      var lastText = editor.getValue();
+      var initialized;
+
+      var playback = false;
+
+      editor.on("change", function(instance, changeObj) {
+        if (playback) return;
+        if (lastText == instance.getValue()) return;
+        if (!initialized) {
+          initialized = true;
+          return;
+        }
+
+        lastText = instance.getValue();
+        latest = (new Date).getTime();
+        myDataRef.child(latest).setWithPriority(instance.getValue(), latest);
+      });
+
+      myDataRef.on("child_added", function(childSnapshot, prevChildName) {
+        var priority = childSnapshot.getPriority();
+        var text = childSnapshot.val();
+        if (latest < priority) {
+          latest = priority;
+          lastText = text;
+          editor.setValue(text);
+        }
+      });
+
+      function playChange(delay, text) {
+        setTimeout(function(){
+            console.log(delay);
+            console.log(text);
+          editor.setValue(text);
+        }, delay);
+      }
+
+      function play() {
+        myDataRef.once("value", function(snapshot) {
+          var start;
+          var changes = snapshot.val();
+          playback = true;
+          for (var i in changes) {
+            var change = changes[i];
+            if (!start) {
+              start = i;
+            }
+
+            var delay = i - start;
+            playChange(delay, change);
+          }
+        });
+      }
+
+    </script>
+
+    <p>Highlight matches of selected text on select</p>
+
+  </body>
+</html>

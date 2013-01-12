@@ -1,4 +1,24 @@
-<% if session[:user_id] == @interview.identee %>
+<p id="notice"><%= notice %></p>
+
+<div id="video">
+    <div id="video_interviewer"></div>
+    <div id="video_interviewee"></div>
+</div>
+<div id="pad"></div>
+<div id="questions"></div>
+<div id="time"></div>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-countdown/1.6.0/jquery.countdown.min.js"></script>
+<script src="http://static.opentok.com/v1.1/js/TB.min.js"></script>
+<script src='https://cdn.firebase.com/v0/firebase.js'></script>
+<script src="/codemirror.js"></script>
+<script src="/util/searchcursor.js"></script>
+<script src="/util/match-highlighter.js"></script>
+<script src="/assets/interview.js"></script>
+
+<link rel="stylesheet" href="/codemirror.css">
+
+<% if session[:user] == @interview.identee %>
 	<%= render :partial => 'interviewee-show' %>
 <% else %> 
 	<%= render :partial => 'interviewer-show' %>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mock &middot; Tok</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/assets/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+      
+      /*Hides the create acount info*/
+      .hide-me {
+        display:none;     
+      }
+      #myModal{
+        height: 450px;
+        width: 800px;
+      }
+      
+    </style>
+    <link href="/assets/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/assets/ico/favicon.png">
+  </head>
+
+  <body>
+
+    <div class="container-narrow">
+
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li class="active" id="LoginBtn"><a href="#">Login</a></li>
+          <li><a href="#myModal" data-toggle="modal">About</a></li>
+        </ul>
+        <h3 class="muted">MockTok</h3>
+      </div>
+
+      <hr>
+
+      <div class="jumbotron">
+        <h1>Conquer Your Fear Of Interviews!</h1>
+        <p class="lead">Walk into your next job interview feeling confident after using our webservice.</p>
+        <a class="btn btn-large btn-success" href="#" id="SignUpBtn">Sign up today</a>
+      </div>
+      
+      <!--Area for the buttons used for sign up-->
+      <div class="hide-me" id="CreateAccnt">
+        <p>I'm back</p>
+      </div>
+    
+    <!--Area for the buttons used for sign up-->
+    <div class="hide-me" id="LoginInfo">
+        <p>This is the login box</p>
+    </div>
+
+    <hr>
+    
+    <div class="row-fluid marketing">
+        <div class="span6">
+            <h4>LiveChat</h4>
+            <p>Video talk with fellow MockTokers in a face-to-face interview similuation.</p>
+        </div>
+        <div class="span6">
+            <h4>LiveText</h4>
+            <p>ASk and answer the nitty gritty coding questions with our real time text editor.</p>
+        </div>
+    </div>
+    
+    <div class="row-fluid marketing">
+        <div class="span6">
+            <h4>Play Back</h4>
+            <p>Save your interviews to review at a later time.</p>
+        </div>
+        <div class="span6">
+            <h4>Review</h4>
+            <p>Gain valuable feedback on your abilities to answer and ask questions.</p>
+        </div>  
+    </div>
+
+      <hr>
+      <div class="footer">
+        <p>&copy; Mocktok 2013</p>
+      </div>
+
+    </div> <!-- /container -->
+
+    <!-- Modal For About -->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div id="myModal">
+            <iframe src="http://player.vimeo.com/video/57094153?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1" width="800" height="450" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        </div>
+    </div>
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/assets/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $('#SignUpBtn').click(function() {
+            console.log("hello");
+            $(this).fadeOut('fast', function() {
+                $('#CreateAccnt').fadeIn('fast');
+            }); 
+        });
+        $('#LoginBtn').click(function() {
+            console.log("login btn pushed");
+            $('#SignUpBtn').fadeOut('fast', function() {
+                $('#LoginInfo').fadeIn('fast');
+            });
+        });
+    
+    </script>
+  </body>
+</html>

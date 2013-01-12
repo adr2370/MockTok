@@ -1,0 +1,27 @@
+<h1>Currently finding a match, hang tight!<p>
+
+<script>
+
+// if current user is interviewEE, ping server every 5 seconds with findOpenInterview, which renders interviewee-show when done
+
+// TODO finish for each user
+
+setInterval(function(){findOpenInterview()},5000)
+
+function findOpenInterview()
+{
+	$.ajax({ type: "POST", url: "<%= interview_findOpenInterview_path %>", data: { timespan: @interview.timespan }
+		}).done(function(html) {});
+}
+
+// if current user is interviewER, ping server every 5 seconds with goToInterviewIfReady, which renders interviewer-show IF found 
+
+setInterval(function(){goToInterviewIfReady()},5000)
+
+function goToInterviewIfReady()
+{
+	$.ajax({ type: "POST", url: "<%= role_goToInterviewIfReady_path %>", data: { interview_id: @interview.id }
+		}).done(function(html) {});
+}
+
+</script>

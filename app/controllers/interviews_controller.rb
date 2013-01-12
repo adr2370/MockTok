@@ -40,16 +40,20 @@ class InterviewsController < ApplicationController
   # POST /interviews
   # POST /interviews.json
   def create
-    @interview = Interview.new(params[:interview])
-
-    respond_to do |format|
-      if @interview.save
-        format.html { redirect_to @interview, notice: 'Interview was successfully created.' }
-        format.json { render json: @interview, status: :created, location: @interview }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @interview.errors, status: :unprocessable_entity }
+    if (params[:role] == "interviewer")
+      @interview = Interview.new(params[:interview])
+      @interview.interviewer = session[:user]
+      respond_to do |format|
+        if @interview.save
+          format.html { redirect_to :action => :waiting, notice: 'Interview was successfully created.' }
+          format.json { render json: @interview, status: :created, location: @interview }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @interview.errors, status: :unprocessable_entity }
+        end
       end
+    else 
+      redirect_to :action => :waiting, :controller => :interviews
     end
   end
 
@@ -85,10 +89,14 @@ class InterviewsController < ApplicationController
   def findOpenInterview
     @interview = User.findOpenInterview( params[:timespan] )
     if @interview
-      render :partial => 'interviewee-show', :layout => false, :locals => { :interview => @interview }
+      redirect_to :interview, :layout => false, :locals => { :interview => @interview }
     else
       nil
     end
+  end
+
+  def waiting
+
   end
 
   # TODO

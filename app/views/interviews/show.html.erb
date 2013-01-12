@@ -1,28 +1,8 @@
 
 <p id="notice"><%= notice %></p>
 
-<% if @interview.waiting? %>
-	<%= render :partial => 'waiting' %>
+<% if session[:user] == @interview.interviewee %>
+	<%= render :partial => 'interviewee-show' %>
 <% else %> 
-	
-
-<p>
-  <b>Expected time:</b>
-  <%= @interview.expected_time %>
-</p>
-
-<p>
-  <b>Waiting:</b>
-  <%= @interview.waiting %>
-</p>
-
-<p>
-  <b>Finished at:</b>
-  <%= @interview.finished_at %>
-</p>
-
-
-<%= link_to 'Edit', edit_interview_path(@interview) %> |
-<%= link_to 'Back', interviews_path %>
-
+	<%= render :partial => 'interviewer-show' %>
 <% end %>

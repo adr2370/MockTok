@@ -1,4 +1,4 @@
-<script>interview(false, "TEST_USER", "<%= @interview.session_id %>", "<%= @openTokToken %>", 15)</script>
+<script>interview(<%= @interview.id %>, false, "TEST_USER", "<%= @interview.session_id %>", "<%= @openTokToken %>", 15)</script>
 <%= link_to :action => :done, :controller => :interviews, :id => @interview.id %>
 
 <style>

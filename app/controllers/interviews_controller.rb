@@ -16,7 +16,7 @@ class InterviewsController < ApplicationController
   def show
     @interview = Interview.find(params[:id])
     if @interview.identer == session[:user_id] or @interview.identee == session[:user_id]
-      @openTokToken = OTSDK.generateToken :session_id => @interview.session_id, :role => OpenTok::RoleConstants::MODERATOR
+      @openTokToken = OTSDK.generateToken :session_id => @interview.session_id, :connection_data => "#{session[:user_id]}", :role => OpenTok::RoleConstants::MODERATOR
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @interview }

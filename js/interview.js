@@ -10,6 +10,12 @@ function sessionConnectedHandler(event) {
 	     publisher = TB.initPublisher(apiKey, 'publisher', publisherProperties);
 	     session.publish(publisher);
 }
+function sessionConnectHandler(event) {
+    var divProps = {width: 400, height:300, name:"Alex's stream"};
+    publisher = TB.initPublisher(apiKey, 'publisher', divProps);
+                      // This assumes that there is a DOM element with the ID 'publisher'.
+    session.publish(publisher);
+}
 function streamCreatedHandler(event) {
 	subscribeToStreams(event.streams);
 }

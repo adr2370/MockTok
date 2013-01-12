@@ -99,6 +99,7 @@ class InterviewsController < ApplicationController
           p "channel vacated!"
         end
       end
+      render :text => "Thanks!"
     else
       status 401
     end

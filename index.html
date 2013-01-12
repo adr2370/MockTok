@@ -15,6 +15,37 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+		<style>
+		.dropup-menu {
+		    bottom: 100%;
+		    top: auto !important;
+		}
+		/* position the arrow downwards, pointing to the menu */
+		.navbar .dropup-menu:before {
+		    border-bottom: none;
+		    border-left: 7px solid transparent;
+		    border-right: 7px solid transparent;
+		    border-top: 7px solid rgba(0, 0, 0, 0.2);
+		    left: 7px;
+		    top: 100%;
+		}
+		.navbar .dropup-menu:after {
+		    border-bottom: none;
+		    border-left: 6px solid transparent;
+		    border-right: 6px solid transparent;
+		    border-top: 6px solid #fff;
+		    left: 10px;
+		    top: 100%;
+		    left: 6px;
+		}
+		/* point the caret up*/
+		.up {
+		    border-left: 4px solid transparent;
+		    border-right: 4px solid transparent;
+		    border-bottom: 4px solid #000000;
+		    border-top: none;
+		}
+		</style>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -22,7 +53,18 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-		<div id="questions"></div>
+		<div id="questions"><ol id='questionsList'></ol></div>
+		
+		<li class="dropdown">
+		  <a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown 3 <b class="caret up"></b></a>
+		  <ul class="dropdown-menu dropup-menu" id="menu3">
+		    <li><a href="#">Action</a></li>
+		    <li><a href="#">Another action</a></li>
+		    <li><a href="#">Something else here</a></li>
+		    <li class="divider"></li>
+		    <li><a href="#">Separated link</a></li>
+		  </ul>
+		</li>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.3.min.js"><\/script>')</script>
@@ -52,6 +94,14 @@
 						questions[questions.length-1].push(data.substring(questionStart,i-1));
 					}
 					i++;
+				}
+				for(var i=0;i<questions.length;i++) { 
+					var stringAdd="<li><ol><li>"+questions[i][0]+"</li>";
+					for(var j=1;j<questions[i].length;j++) { 
+						stringAdd+="<li>"+questions[i][j]+"</li>";
+					}
+					stringAdd+="</ol></li>";
+					$("#questionsList").append(stringAdd);
 				}
 			});
 		</script>

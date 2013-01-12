@@ -66,7 +66,9 @@ function interview(interviewer, username, session, token, length) {
         // Store peer connection ID for recording
         peer = stream.connection.connectionId;
         // Point it to the right div
-        tokbox.subscribe(stream, interviewer ? "video_interviewee" : "video_interviewer", {width: 400, height: 300});
+        tokbox.subscribe(stream, interviewer ? "video_interviewee" : "video_interviewer", {width: $(window).height()*2/3-1, height: $(window).height()/2-1});
+		$("#video object:first-child").attr('style','outline: none;position: absolute;left: 0px;top: 0px;');
+		$("#video object:last-child").attr('style','outline: none;position: absolute;left: 0px;top: '+$(window).height()/2+'px;');
         // Begin the countdown
         $("#time").countdown({
             until: "+" + length + "m",
@@ -86,7 +88,7 @@ function interview(interviewer, username, session, token, length) {
 
     tokbox.addEventListener("sessionConnected", function(e) {
         // Publish our stream
-        var publisher = TB.initPublisher(apikey, interviewer ? "video_interviewer" : "video_interviewee", {width: 400, height: 300});
+        var publisher = TB.initPublisher(apikey, interviewer ? "video_interviewer" : "video_interviewee", {width: $(window).height()*2/3-1, height: $(window).height()/2-1});
         tokbox.publish(publisher);
         // Subscribe to existing streams
         e.streams.forEach(tokboxSubscribe);
@@ -105,8 +107,11 @@ function interview(interviewer, username, session, token, length) {
     // Subscribe to streams as they come in
     tokbox.addEventListener("streamCreated", function(e) {
         e.streams.forEach(tokboxSubscribe);
+		$("#video object:first-child").attr('style','outline: none;position: absolute;left: 0px;top: 0px;');
+		$("#video object:last-child").attr('style','outline: none;position: absolute;left: 0px;top: '+$(window).height()/2+'px;');
     });
     
     // Actually connect to tokbox
     tokbox.connect(apikey, token);
+	$(".CodeMirror").attr('style',"position: absolute;right: 0px;top: 0px;height: "+($(window).height()-1)+"px;width: "+($(window).width()-$(window).height()*2/3)+"px");
 }

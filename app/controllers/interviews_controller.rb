@@ -72,7 +72,7 @@ class InterviewsController < ApplicationController
   end
   
   def auth
-    @channel = params[:channel_name][17..]
+    @channel = params[:channel_name][17..-1]
     @interview = Interview.find(@channel)
     if @interview.identer == session[:user_id] or @interview.identee == session[:user_id]
       response = channel.authenticate(params[:socket_id], {
@@ -90,7 +90,7 @@ class InterviewsController < ApplicationController
     if webhook.valid?
       webhook.events.each do |event|
         if event["name"] == 'channel_vacated'
-          @channel = event["channel"][17..]
+          @channel = event["channel"][17..-1]
           @interview = Interview.find(@channel)
           @interview.waiting = false
           @interview.save!

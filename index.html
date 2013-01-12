@@ -30,8 +30,31 @@
         <script src="js/plugins.js"></script>
 
 		<script type="text/javascript">
-			$.get("/questions.txt", function(data){
+			var questions=new Object();
+			questions.categories=new Array();
+			$.get("questions.txt", function(data) {
+				var currCategory='';
+				for(var i=0;i<data.length;i++) {
+					if(i<data.length-10&&data.substring(i,i+10)=='Category: ') {
+						i+=10;
+						var start=i;
+						while(i<data.length&&data[i]!='\n') {
+							i++;
+						}
+						currCategory=data.substring(start,i-start);
+						var currCate=new Array();
+						currCate.push(currCategory);
+						questions.categories.push(currCate);
+					} else {
+						var questionStart=i;
+						while(i<data.length-1&&(data[i]!='\n'||data[i+1]!='\n')) {
+							i++;
+						}
+						questions.categories[questions.categories.length-1].push(data.substring(questionStart,i-questionStart));
+					}
+				}
 				console.log(data);
+				console.log(questions);
 			});
 		</script>
 

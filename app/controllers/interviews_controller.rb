@@ -40,16 +40,20 @@ class InterviewsController < ApplicationController
   # POST /interviews
   # POST /interviews.json
   def create
-    @interview = Interview.new(params[:interview])
-
-    respond_to do |format|
-      if @interview.save
-        format.html { redirect_to @interview, notice: 'Interview was successfully created.' }
-        format.json { render json: @interview, status: :created, location: @interview }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @interview.errors, status: :unprocessable_entity }
+    if (params[:role] == "interviewer")
+      @interview = Interview.new(params[:interview])
+      @interview.interviewer = session[:user]
+      respond_to do |format|
+        if @interview.save
+          format.html { redirect_to :action => :waiting, :interview_id => @interview.id, notice: 'Interview was successfully created.' }
+          format.json { render json: @interview, status: :created, location: @interview }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @interview.errors, status: :unprocessable_entity }
+        end
       end
+    else 
+      redirect_to :action => :waiting, :controller => :interviews, :timespan => params[:interview][:expected_time]
     end
   end
 
@@ -83,16 +87,30 @@ class InterviewsController < ApplicationController
 
   # TODO
   def findOpenInterview
+    Rails.logger.info("@@@@@@@@@@@@@@@@@@@@ FINDING INTERVIEW")
     @interview = User.findOpenInterview( params[:timespan] )
     if @interview
-      render :partial => 'interviewee-show', :layout => false, :locals => { :interview => @interview }
+      redirect_to :interview, :layout => false, :locals => { :interview => @interview }
     else
       nil
     end
   end
 
+  def waiting
+    if params[:timespan]
+      @interview_timespan = params[:timespan]
+    elsif params[:interview_id]
+      @interview_id = params[:interview_id]
+    else
+      puts "THIS SHOULD NEVER HAPPEN FUUUUUUUUCK"
+      redirect_to :action => :new
+    end
+
+  end
+
   # TODO
   def goToInterviewIfReady
+    Rails.logger.info("%%%%%%%%%%%%%%%%%% GOING TO INTERVIEW")
     @interview = Interview.find(params[:interview_id])
   end
 

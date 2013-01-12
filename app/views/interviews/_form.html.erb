@@ -15,14 +15,12 @@
     <%= f.label :expected_time %><br />
     <%= f.number_field :expected_time %>
   </div>
-  <div class="field">
-    <%= f.label :waiting %><br />
-    <%= f.text_field :waiting %>
-  </div>
-  <div class="field">
-    <%= f.label :finished_at %><br />
-    <%= f.datetime_select :finished_at %>
-  </div>
+
+  <%= f.hidden_field :waiting, :value => true %>
+
+    <br><%= radio_button_tag 'role', 'interviewer', true %> Interviewer
+    <br><%= radio_button_tag 'role', 'interviewee' %> Interviewee
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -17,6 +17,8 @@ MockTok::Application.routes.draw do
       post 'findOpenInterview'
       get 'goToInterviewIfReady'
       post 'goToInterviewIfReady'
+      get 'waiting'
+      post 'waiting'
     end
   end
 

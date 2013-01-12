@@ -6,14 +6,15 @@ class User < ActiveRecord::Base
   validates :singly_id, :presence => true
 
 
-  def self.findOpenInterview( timespan )
-  	@interviews = Interview.find( :all, :waiting => true, :order => "created_at desc" ).first
-  	if @interviews == []
+  def findOpenInterview( timespan )
+  	@interviews = Interview.where( "waiting=? AND expected_time=?", true, timespan )
+  	if @interviews == [] or @interviews.nil?
   		nil
   	end
   	@interview = @interviews.first
-  	@interview.interviewee = self
+    @interview.identee = self.id
   	@interview.waiting = false
+    @interview.save!
   	@interview
   end
 

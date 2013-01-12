@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130112005437) do
+ActiveRecord::Schema.define(:version => 20130112103425) do
 
   create_table "interviews", :force => true do |t|
     t.integer  "expected_time"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(:version => 20130112005437) do
     t.datetime "finished_at"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "identer"
+    t.integer  "identee"
+    t.string   "session_id"
   end
 
   create_table "users", :force => true do |t|

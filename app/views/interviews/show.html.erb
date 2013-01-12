@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="/codemirror.css">
 
-<% if session[:user] == @interview.interviewee %>
+<% if session[:user] == @interview.identee %>
 	<%= render :partial => 'interviewee-show' %>
 <% else %> 
 	<%= render :partial => 'interviewer-show' %>

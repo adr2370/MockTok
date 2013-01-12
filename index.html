@@ -30,6 +30,7 @@
         <script src="js/plugins.js"></script>
 
 		<script type="text/javascript">
+			var q;
 			var questions=new Object();
 			questions.categories=new Array();
 			$.get("questions.txt", function(data) {
@@ -55,6 +56,7 @@
 						questions.categories[questions.categories.length-1].push(data.substring(questionStart,i-questionStart));
 					}
 				}
+				q=data;
 				console.log(questions);
 			});
 		</script>

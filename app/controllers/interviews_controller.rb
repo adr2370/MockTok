@@ -81,6 +81,7 @@ class InterviewsController < ApplicationController
     end
   end
 
+  # TODO
   def findOpenInterview
     @interview = User.findOpenInterview( params[:timespan] )
     if @interview
@@ -90,9 +91,9 @@ class InterviewsController < ApplicationController
     end
   end
 
+  # TODO
   def goToInterviewIfReady
     @interview = Interview.find(params[:interview_id])
-    if 
   end
 
 end

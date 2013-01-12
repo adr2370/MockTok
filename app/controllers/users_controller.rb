@@ -84,6 +84,7 @@ class UsersController < ApplicationController
   def login_or_create
     @user = User.find_or_create_by_singly_id(params[:userId])
     session[:user_id] = @user.id
+    render json:{status:'success'}
     # redirect_to :action => :new, :controller => :interviews
   end
 

@@ -99,11 +99,12 @@ class InterviewsController < ApplicationController
 
   # TODO
   def findOpenInterview
+    
     @interview = User.find( session[:user_id] ).findOpenInterview( params[:timespan] )
     if @interview
       render json: { :id => @interview.id }
     else
-      0
+      render json: { status: "no data", id: 0}
     end
   end
 
@@ -113,7 +114,7 @@ class InterviewsController < ApplicationController
     unless ( @interview.identee.nil? ) 
       render json: { :id => @interview.id }
     else
-      0
+        render json: { status: "no data", id: 0}
     end
   end
 

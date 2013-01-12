@@ -10,12 +10,13 @@ class User < ActiveRecord::Base
   	@interviews = Interview.where( "waiting=? AND expected_time=?", true, timespan )
   	if @interviews == [] or @interviews.nil?
   		nil
+		else
+		  @interview = @interviews.first
+      @interview.identee = self.id
+    	@interview.waiting = false
+      @interview.save!
+    	@interview
   	end
-  	@interview = @interviews.first
-    @interview.identee = self.id
-  	@interview.waiting = false
-    @interview.save!
-  	@interview
   end
 
 end

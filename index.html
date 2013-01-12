@@ -63,24 +63,14 @@
 		<ul class="nav nav-pills">
 		<li class="dropdown" style="position: absolute;right: 0px;bottom: 0px;">
 		  <a href="#" data-toggle="dropdown" class="dropdown-toggle">Suggested Question<b class="caret up"></b></a>
-		<ul class="dropdown-menu dropup-menu">
+		<ul id="questionsList" class="dropdown-menu dropup-menu">
 			<li>
-			                  <a href="#">More options</a>
-			                  <ul class="dropdown-menu">
-			                    <li><a href="#">Second level link</a></li>
-			                    <li><a href="#">Second level link</a></li>
-			                    <li><a href="#">Second level link</a></li>
-			                    <li><a href="#">Second level link</a></li>
-			                    <li><a href="#">Second level link</a></li>
-			                  </ul>
-			                </li>
-			</ul>
+				Select Category:
+			</li>
+			
+		</ul>
 		</li>
 		</ul>
-		
-	  <ul class="dropdown-menu dropup-menu" id="questionsList" style="display:none;text-align: right;left: -50%;">
-	  </ul>
-
 		<script type="text/javascript">
 			var q;
 			var questions=new Array();
@@ -107,11 +97,12 @@
 					i++;
 				}
 				for(var i=0;i<questions.length;i++) { 
-					var stringAdd="<li><ol><li>"+questions[i][0]+"</li>";
+					/*var stringAdd="<li><ol><li>"+questions[i][0]+"</li>";
 					for(var j=1;j<questions[i].length;j++) { 
 						stringAdd+="<li>"+questions[i][j]+"</li>";
 					}
-					stringAdd+="</ol></li>";
+					stringAdd+="</ol></li>";*/
+					var stringAdd="<li>"+questions[i][0]+"</li>";
 					$("#questionsList").append(stringAdd);
 				}
 			});

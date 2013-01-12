@@ -12,7 +12,7 @@ function sessionConnectedHandler(event) {
 	         // This example assumes that a publisherContainer div exists
 	     publisherContainer.appendChild(div);
 	var publisherProperties = {width: 400, height:300};
-	     publisher = TB.initPublisher(apiKey, 'publisher'.publisherProperties);
+	     publisher = TB.initPublisher(apiKey, 'publisher', publisherProperties);
 	     session.publish(publisher);
 }
 function streamCreatedHandler(event) {

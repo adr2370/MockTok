@@ -4,6 +4,8 @@ Write code to reverse a String
 EXAMPLE
 Input: "Mocktok"
 Output: "kotkcoM"
+FORMAT
+public String reverse(String s) { }
 
 Category: Linked Lists
 

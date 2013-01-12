@@ -1,0 +1,14 @@
+
+<div id="video"></div>
+<div id="pad"></div>
+
+<script src="http://static.opentok.com/v1.1/js/TB.min.js"></script>
+<script src='https://cdn.firebase.com/v0/firebase.js'></script>
+<script src="/codemirror.js"></script>
+<script src="/util/searchcursor.js"></script>
+<script src="/util/match-highlighter.js"></script>
+<script src="/assets/interview.js"></script>
+
+<link rel="stylesheet" href="/codemirror.css">
+
+<script>interview("<%= @interview.session_id %>", "<%= @openTokToken %>", "<%= @interview.archiveID %>", "<%= @interview.identer %>", "<%= @interview.identee %>")</script>

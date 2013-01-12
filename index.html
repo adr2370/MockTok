@@ -72,8 +72,9 @@
 		</ul>
 		<script type="text/javascript">
 		$('.dropdown').click(function() {
-		  $('.dropdown-menu').slideToggle();
-		  repopulate();
+		  $('.dropdown-menu').slideToggle(400, function() {
+			repopulate();
+		});
 		});
 		$('.dropdown-menu').click(function(e) {
 		        e.stopPropagation();

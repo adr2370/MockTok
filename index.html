@@ -73,6 +73,7 @@
 		<script type="text/javascript">
 		$('.dropdown').click(function() {
 		  $('.dropdown-menu').slideToggle();
+		  repopulate();
 		});
 		$('.dropdown-menu').click(function(e) {
 		        e.stopPropagation();
@@ -104,17 +105,27 @@
 				}
 				for(var i=0;i<questions.length;i++) {
 					var question=questions[i][Math.floor(Math.random()*(questions[i].length-1)+1)].replace(/\n/g, '<br />');
-					var stringAdd="<li id='category"+(i+1)+"'><a onclick='slide("+(i+1)+")'>"+questions[i][0]+"</a></li><li id=question"+(i+1)+" style='display:none;'>"+question+"</li>";
+					var stringAdd="<li id='category"+(i+1)+"'><a onclick='slide("+(i+1)+")'>"+questions[i][0]+"</a></li><li id=question"+(i+1)+" style='display:none;margin-left: 10px;margin-right: 10px;text-align: left;'>"+question+"</li>";
 					$("#questionsList").append(stringAdd);
 				}
 			});
-			function slide(x) {
+			function repopulate() {
 				for(var i=0;i<=20;i++) {
-					if(i!=x) {
-						$("#category"+i).slideUp();
-					}
+					$("#category"+i).show();
+					$("#question"+i).hide();
 				}
-				$("#question"+x).slideDown();
+			}
+			function slide(x) {
+				if($("#category10").is(":visible")) {
+					for(var i=0;i<=20;i++) {
+						if(i!=x) {
+							$("#category"+i).slideUp();
+						}
+					}
+					$("#question"+x).slideDown();
+				} else {
+					$("#question"+x).html(questions[x-1][Math.floor(Math.random()*(questions[x-1].length-1)+1)].replace(/\n/g, '<br />'));
+				}
 			}
 		</script>
 

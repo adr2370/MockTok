@@ -112,6 +112,17 @@ class InterviewsController < ApplicationController
       status 401
     end
   end
+
+  # playback function
+  def playback
+    @user = User.find(session[:user_id])
+    @interview = Interview.find(params[:id])
+    # todo - check to make sure identer and identee is user
+    #
+
+    @openTokToken = OTSDK.generateToken :session_id => @interview.session_id, :connection_data => "#{session[:user_id]}", :role => OpenTok::RoleConstants::MODERATOR
+
+  end
   
   # PUT /interviews/1
   # PUT /interviews/1.json

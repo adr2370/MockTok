@@ -9,6 +9,7 @@
 function playback(session, token, archive, interviewer, interviewee) {
     var apikey = "22493452"; // Tokbox API key constant
     var tokbox = TB.initSession(session);
+TB.setLogLevel( TB.DEBUG );
     var fireBase = new Firebase('https://mocktok.firebaseio.com/');
     var fireChild = fireBase.child(session);
     var editor = CodeMirror.fromTextArea($("#pad")[0], {lineNumbers : true});
@@ -44,16 +45,14 @@ function playback(session, token, archive, interviewer, interviewee) {
     // Subscribe to interviewer & interviewee streams
     tokbox.addEventListener("streamCreated", function(e) {
         e.streams.forEach(function(stream) {
-            if(stream.connection.data != interviewer && stream.connection.data != interviewee)
-                return;
+            //if(stream.connection.data != interviewer && stream.connection.data != interviewee)
+                //return;
             // Point it to the right div
-            var isInterviewer = stream.connection.data == interviewer;
-            var container = $("<div>").attr("id","video_" + isInterviewer ? "interviewer" : "interviewee");
-            if(isInterviewer)
+            //var isInterviewer = stream.connection.data == interviewer;
+            var id = "video_" + stream.streamId
+            var container = $("<div>").attr("id", id);
                 $("#video").append(container);
-            else
-                $("#video").prepend(container);
-            tokbox.subscribe(stream, "video_subscriber", {width: $(window).height()*2/3-1, height: $(window).height()/2-1});
+            tokbox.subscribe(stream, id, {width: $(window).height()*2/3-1, height: $(window).height()/2-1});
             $("#video object:first-child").attr('style','outline: none;position: absolute;left: 0px;top: 0px;');
             $("#video object:last-child").attr('style','outline: none;position: absolute;left: 0px;top: '+$(window).height()/2+'px;');
         });

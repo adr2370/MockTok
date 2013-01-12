@@ -51,7 +51,6 @@ function interview(id, interviewer, username, session, token, length) {
             tokbox.stopRecording(archive);
             tokbox.closeArchive(archive);
         }
-        tokbox.unpublish();
         tokbox.disconnect();
         // Do we need to stop the editor?
         setTimeout(function() {

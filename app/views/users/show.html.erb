@@ -8,3 +8,29 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+
+<table class="table" border="1">
+	<tr>
+		<th>Date</th>
+		<th>Role</th>
+		<th>My Score</th>
+		<th>My Comments</th>
+		<th>Other's Score</th>
+		<th>Other's Comments</th>
+		<th>Playback</th>
+	</tr>
+	<% if @interviews %>
+		<% @interviews.each do |interview| %>
+			<tr class=userRow>
+			<td class="userDate"><small><%= interview.finished_at.to_date %></small></td>
+			<td class="userRole"><%= if interview.identee == @user.id then "<small>Interviewee</small>".html_safe else "<small>Interviewer</small>".html_safe end %></td>
+			<td class="userScore"><%= if interview.identee == @user.id then interview.identee_score else interview.identer_score end %></td>
+			<td class="userComments"><%= if interview.identee == @user.id then interview.identee_comments else interview.identer_comments end %></td>
+			<td class="otherScore"><%= if interview.identee == @user.id then interview.identer_score else interview.identee_score end %></td>
+			<td class="otherComments"><%= if interview.identee == @user.id then interview.identer_comments  else interview.identee_comments end %></td>
+			<td class="playback"><%= if session[:user_id] == @user.id then "<small>PLAYBACK BUTTON HERE</small>".html_safe else "<small>NOOOO PLAYBACK BUTTON HERE</small>".html_safe end %></td>
+			</tr>
+		<% end %>
+	<% end %>
+</table>

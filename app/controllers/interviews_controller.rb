@@ -28,7 +28,7 @@ class InterviewsController < ApplicationController
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @interview }
-      # end
+       end
     # else
     #   render 'application/forbidden', :status => :unauthorized
     # end

@@ -165,7 +165,7 @@ class InterviewsController < ApplicationController
     @interview.identer_score = params[:identer_score]
     @interview.identer_comments = params[:identer_comments]
     @interview.save
-    redirect_to :action => :signup, :controller => :pages
+    redirect_to User.find( session[:user_id] );
   end
 
   def interviewee_review
@@ -173,7 +173,7 @@ class InterviewsController < ApplicationController
     @interview.identee_score = params[:identee_score]
     @interview.identee_comments = params[:identee_comments]
     @interview.save
-    redirect_to :action => :signup, :controller => :pages
+    redirect_to User.find( session[:user_id] );
   end
 
   

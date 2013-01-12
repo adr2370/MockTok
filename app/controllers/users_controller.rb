@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
+    @user = User.find( session[:user_id] ) # User.find(params[:id])
     @interviews = Interview.where( "identer=? OR identee=?", @user.id, @user.id )
 
     respond_to do |format|

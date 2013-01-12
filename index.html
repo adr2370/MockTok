@@ -71,7 +71,7 @@
 		      function printChatMessage(count, name, text) {
 				var extraSpace='';
 				for(var i=0;i<count.toString().length;i++) extraSpace+=' ';
-		        $('<div/>').html('<a style="font-family: courier;">'+count+extraSpace+'</a>'+': '+text)).appendTo($('#messagesDiv'));
+		        $('<div/>').html('<a style="font-family: courier;">'+count+extraSpace+'</a>'+': '+text).appendTo($('#messagesDiv'));
 		        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
 		      };
 		      dataRef.on('child_added', function(snapshot) {

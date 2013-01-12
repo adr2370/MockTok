@@ -72,7 +72,7 @@
 			var services=new Array("github");
 			for(var i=0;i<services.length;i++) {
 				var c=services[i];
-				$('#login').append('<div id="login'+c+'" style="float: left;margin-right: 8px;margin-bottom:2px;width: 30px;"><a href="https://api.singly.com/oauth/authorize?client_id=fbe8f4a0df06ac78b9152a1710914fef&service='+c+'&redirect_uri='+window.location.host+window.location.pathname+'&response_type=token"><img src=http://mocktok.com/img/'+c+'.jpg height="32" width="32"/></a></div>');
+				$('#login').append('<div id="login'+c+'" style="float: left;margin-right: 8px;margin-bottom:2px;width: 30px;"><a href="https://api.singly.com/oauth/authorize?client_id=fbe8f4a0df06ac78b9152a1710914fef&service='+c+'&redirect_uri=http://'+window.location.host+window.location.pathname+'&response_type=token"><img src=http://mocktok.com/img/'+c+'.jpg height="32" width="32"/></a></div>');
 			}
 		</script>
 

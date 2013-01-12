@@ -74,7 +74,7 @@
 		      var dataRef = new Firebase('https://interviewthing.firebaseio.com/');
 		      $('#messageInput').keypress(function (e) {
 		        if (e.keyCode == 13) {
-		          var count = $('.message').size()+1;
+		          var count = $('#messagesDiv').children().size()+1;
 		          var name = $('#nameInput').val();
 		          var text = $('#messageInput').val();
 		          dataRef.push({count: count, name: name, text: text});
